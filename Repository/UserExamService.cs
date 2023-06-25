@@ -1,9 +1,10 @@
 ﻿using MVCExamProject.Data;
 using MVCExamProject.Models;
+using MVCExamProject.Repository.Interfaces;
 
 namespace MVCExamProject.Repository
 {
-    public class UserExamService : IRepository<UserExam>
+    public class UserExamService : IUserExamRepository
     {
         private readonly ExamContext context;
 

@@ -13,9 +13,8 @@ namespace MVCExamProject.Models
         public int ExamId { get; set; }
         public int Degree { get; set; }
         public bool IsPassed { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
         public Exam? Exam { get; set; }
         public User? User { get; set; }
-
     }
 }

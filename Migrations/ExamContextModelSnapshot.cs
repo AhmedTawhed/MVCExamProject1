@@ -30,16 +30,19 @@ namespace MVCExamProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Message")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserID");
 
                     b.ToTable("ContactUsMSGS");
                 });
@@ -176,17 +179,6 @@ namespace MVCExamProject.Migrations
                     b.ToTable("UserExams");
                 });
 
-            modelBuilder.Entity("MVCExamProject.Models.ContactUs", b =>
-                {
-                    b.HasOne("MVCExamProject.Models.User", "User")
-                        .WithMany("Messages")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("MVCExamProject.Models.ExamQuestion", b =>
                 {
                     b.HasOne("MVCExamProject.Models.Exam", "Exam")
@@ -212,7 +204,7 @@ namespace MVCExamProject.Migrations
             modelBuilder.Entity("MVCExamProject.Models.UserExam", b =>
                 {
                     b.HasOne("MVCExamProject.Models.Exam", "Exam")
-                        .WithMany("UserExams")
+                        .WithMany()
                         .HasForeignKey("ExamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -231,14 +223,10 @@ namespace MVCExamProject.Migrations
             modelBuilder.Entity("MVCExamProject.Models.Exam", b =>
                 {
                     b.Navigation("ExamQuestions");
-
-                    b.Navigation("UserExams");
                 });
 
             modelBuilder.Entity("MVCExamProject.Models.User", b =>
                 {
-                    b.Navigation("Messages");
-
                     b.Navigation("UserExams");
                 });
 #pragma warning restore 612, 618

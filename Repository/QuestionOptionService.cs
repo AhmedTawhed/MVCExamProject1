@@ -1,9 +1,10 @@
 ﻿using MVCExamProject.Data;
 using MVCExamProject.Models;
+using MVCExamProject.Repository.Interfaces;
 
 namespace MVCExamProject.Repository
 {
-    public class QuestionOptionService : IRepository<QuestionOption>
+    public class QuestionOptionService : IQuestionOptionRepository
     {
         private readonly ExamContext context;
 

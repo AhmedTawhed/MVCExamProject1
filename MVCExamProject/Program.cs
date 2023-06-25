@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using MVCExamProject.Data;
+
 namespace MVCExamProject
 {
     public class Program
@@ -8,6 +11,8 @@ namespace MVCExamProject
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<ExamContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("Exams")));
 
             var app = builder.Build();
 

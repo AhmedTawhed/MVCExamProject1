@@ -1,0 +1,16 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MVCExamProject.Models
+{
+    public class ExamQuestion
+    {
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public string Title { get; set; }
+        [ForeignKey("Exam")]
+        public int ExamId { get; set; }
+        public Exam? Exam { get; set; }
+    }
+}

@@ -4,6 +4,7 @@ using MVCExamProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCExamProject.Migrations
 {
     [DbContext(typeof(ExamContext))]
-    partial class ExamContextModelSnapshot : ModelSnapshot
+    [Migration("20230625163252_remove-compositekey")]
+    partial class removecompositekey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,6 +54,12 @@ namespace MVCExamProject.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Degree")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MinDegree")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -124,7 +133,6 @@ namespace MVCExamProject.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsAdmin")
@@ -160,9 +168,6 @@ namespace MVCExamProject.Migrations
 
                     b.Property<int>("ExamId")
                         .HasColumnType("int");
-
-                    b.Property<bool>("IsPassed")
-                        .HasColumnType("bit");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");

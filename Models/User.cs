@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVCExamProject.Models
 {
@@ -10,8 +12,10 @@ namespace MVCExamProject.Models
         [MinLength(3)]
         [Required]
         public string Name { get; set; }
-        [DataType(DataType.EmailAddress)]
-        public string? Email { get; set; }
+        [Required]
+        [EmailAddress]
+        //[Index(IsUnique = true)]
+        public string Email { get; set; }
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [MaxLength(40)]

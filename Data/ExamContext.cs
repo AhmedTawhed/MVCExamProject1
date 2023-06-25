@@ -6,6 +6,11 @@ namespace MVCExamProject.Data
 {
     public class ExamContext : DbContext
     {
+        public ExamContext(DbContextOptions options) : base(options)
+        {
+
+        }
+
         public virtual DbSet<Exam> Exams { get; set; }
         public virtual DbSet<ContactUs> ContactUsMSGS { get; set; }
         public virtual DbSet<ExamQuestion> ExamQuestions { get; set; }
@@ -13,14 +18,7 @@ namespace MVCExamProject.Data
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserExam> UserExams { get; set; }
 
-        public ExamContext(DbContextOptions options) : base(options)
-        {
-            
-        }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<UserExam>()
-                .HasKey(p => new {p.UserId,p.ExamId });
-        }
+       
+
     }
 }

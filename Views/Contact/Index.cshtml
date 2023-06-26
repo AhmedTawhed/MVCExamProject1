@@ -1,0 +1,35 @@
+﻿@using MVCExamProject.Controllers
+@Model contact
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Admin/Shared/_GeneralLayout.cshtml";
+}
+
+
+<h2>Contact Us</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" id="Name" name="Name" value="@Model.name">
+    </div>
+
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email">
+    </div>
+
+    @*<div class="form-group">
+        <label for="Subject">Subject</label>
+        <input type="text" class="form-control" id="Subject" name="Subject" value="@Model.Message">
+    </div>*@
+
+    <div class="form-group">
+        <label for="Message">Message</label>
+        <textarea class="form-control" id="Message" name="Message" rows="5">@Model.Message</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+

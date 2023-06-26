@@ -18,11 +18,10 @@
 			<div class="page d-flex flex-row flex-column-fluid">
             <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 
-
 <div id="kt_header" class="header align-items-stretch">
 <div class="header-brand">
     <a href="">
-        <img alt="Logo" src="../layout/imgs/logo-w.webp" class="h-25px h-lg-25px">
+        <img alt="Logo" src="" class="h-25px h-lg-25px">
     </a>
     <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-minimize" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">
         <span class="svg-icon svg-icon-1 me-n1 minimize-default">
@@ -57,7 +56,7 @@
             <h1 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">Dashboard</h1>
             <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 pt-1">
                 <li class="breadcrumb-item text-muted">
-                    <a href="" class="text-muted text-hover-primary">Home</a>
+                    <a asp-controller="dashboard" asp-action="index" class="text-muted text-hover-primary">Home</a>
                 </li>
                 <li class="breadcrumb-item">
                     <span class="bullet bg-gray-200 w-5px h-2px"></span>
@@ -68,8 +67,6 @@
     </div>
 </div>
 </div>
-
-
 
 <div id="kt_aside" class="aside" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_mobile_toggle">
 
@@ -82,7 +79,7 @@
         </div>
     </div>
     <div class="menu-item">
-        <a class="menu-link active" href="index.php">
+        <a class="menu-link" asp-controller="dashboard" asp-action="index">
             <span class="menu-icon">
                 <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                 <span class="svg-icon svg-icon-2">
@@ -100,7 +97,7 @@
     </div>
     
     <div class="menu-item">
-    <a class="menu-link " href="">
+    <a class="menu-link" asp-controller="Exam" asp-action="index">
             <span class="menu-icon">
                 <!--begin::Svg Icon | path: assets/media/icons/duotune/communication/com001.svg-->
 <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -115,7 +112,7 @@
     </div>
     
     <div class="menu-item">
-    <a class="menu-link " href="">
+      <a class="menu-link" asp-controller="Student" asp-action="index">
             <span class="menu-icon">
 <!--begin::Svg Icon | path: assets/media/icons/duotune/communication/com014.svg-->
 <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -131,7 +128,7 @@
     </div>
     
     <div class="menu-item">
-    <a class="menu-link " href="">
+     <a class="menu-link" asp-controller="Message" asp-action="index">
             
         <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path opacity="0.3" d="M8 8C8 7.4 8.4 7 9 7H16V3C16 2.4 15.6 2 15 2H3C2.4 2 2 2.4 2 3V13C2 13.6 2.4 14 3 14H5V16.1C5 16.8 5.79999 17.1 6.29999 16.6L8 14.9V8Z" fill="black"></path>
@@ -170,5 +167,7 @@
 		<script src="/admin/assets/plugins/global/plugins.bundle.js"></script>
 		<script src="/admin/assets/js/scripts.bundle.js"></script>
 		<script src="/admin/assets/js/dashboard-main.js"></script>
+
+    @RenderSection("Js",false)
 	</body>
 </html>

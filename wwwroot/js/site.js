@@ -2,3 +2,16 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+
+
+// JavaScript (script.js)
+const button = document.getElementById("mainform");
+
+button.addEventListener("submit", function () {
+    Swal.fire(
+        'Good job!',
+        'We Will Get Your Message!',
+        'success'
+    )
+});

@@ -1,7 +1,7 @@
 ﻿@model ContactUs
 
 @{
-	ViewData["Title"] = "contactus";
+	ViewData["Title"] = "Contact Us";
 	//Layout = "~/Views/Admin/Shared/_GeneralLayout.cshtml";
 }
 <section class="min-vh-100 d-flex align-items-center bg-soft">
@@ -11,17 +11,19 @@
 				<div class="signin-inner mt-3 mt-lg-0 bg-white shadow border rounded border-light w-100">
 					<div class="row gx-0 align-items-center justify-content-between">
 						<div class="col-12 col-lg-5 d-none d-lg-block rounded-left bg-secondary">
-							<img src="~/lib/Scripts-For-Templet/assets/img/illustrations/login.svg" alt="login image" />
+							<img src="~/lib/Scripts-For-template/assets/img/illustrations/login.svg" alt="login image" />
 						</div>
 						<div class="col-12 col-lg-7 px-3 py-5 px-sm-5 px-md-6">
 							<div class="text-center text-md-center mb-4 mt-md-0">
 								<h1 class="mb-0 h3">Contact US</h1>
 							</div>
-							<form method="post" action="\Contact\Save">
+
+							<form method="post" id="mainform" action="\ContactUs\Save">
+
 								<!-- Form -->
 								<div class="form-group mb-4">
-									<label for="exampleInputPasswordCard4">Name</label>
-									<input asp-for="name" class="form-control" />
+									<label for="name">Name</label>
+									<input asp-for="name" class="form-control" placeholder="Enter Your Name" />
 									<span asp-validation-for="name" class="text-danger"></span>
 									@*<div class="input-group">
 									<input type="password" placeholder="Name" class="form-control" id="exampleInputPasswordCard4" />
@@ -30,8 +32,8 @@
 								<!-- End of Form -->
 								<!-- Form -->
 								<div class="form-group mb-4">
-									<label for="exampleInputEmailCard3">Your Email</label>
-									<input asp-for="Email" class="form-control" />
+									<label for="Email">Your Email</label>
+									<input asp-for="Email" class="form-control" placeholder="Enter Your Email" />
 									<span asp-validation-for="Email" class="text-danger"></span>
 									@*<div class="input-group">
 									<span class="input-group-text" id="basic-addon3"><span class="fas fa-envelope"></span></span>
@@ -40,31 +42,20 @@
 									</div>*@
 								</div>
 								<!-- End of Form -->
-								<div class="form-group">
-
-
-									<!-- Form -->
-									<div class="form-group mb-4">
-										<label for="message">Message:</label>
-
-										<textarea asp-for="Message" rows="5" class="form-control" />Enter Your Message</textarea>
-										<span asp-validation-for="Message" class="text-danger"></span>
-
-										@*<div class="input-group">
-										<textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-										</div>*@
-
-
-
-
-									</div>
-
-
+								<!-- Form -->
+								<div class="form-group mb-4">
+									<label for="message">Message:</label>
+									<textarea asp-for="Message" rows="5" class="form-control" placeholder="Enter Your Message here" /></textarea>
+									<span asp-validation-for="Message" class="text-danger"></span>
 								</div>
+								<!-- End of Form -->
+
 								<button type="submit" class="btn btn-block btn-primary">
 									Send
 								</button>
+
 							</form>
+
 						</div>
 					</div>
 				</div>

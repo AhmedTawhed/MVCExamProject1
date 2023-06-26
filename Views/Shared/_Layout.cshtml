@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 	<title>@ViewData["Title"] - MVCExamProject</title>
 
 	@*
@@ -14,15 +14,27 @@
 	*@
 
 	<link type="text/css" href="~/lib/Scripts-For-Template/css/swipe.css" rel="stylesheet" />
+	<link rel="stylesheet" href="~/css/sweetalert2.css" />
 
 </head>
 <body>
+
+
 	<header class="header-global" id="home">
 		<partial name="_NavbarPartial" />
 	</header>
+	<br />
+	<br />
+	<br />
+
+
 	<main>
 		@RenderBody()
 	</main>
+
+
+	<br />
+	<br />
 	<footer class="footer py-5 pt-lg-6">
 		<partial name="_FooterPartial" />
 	</footer>
@@ -34,7 +46,6 @@
 
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="~/js/site.js" asp-append-version="true"></script>
 
 	*@
 
@@ -54,6 +65,10 @@
 	<!-- Swipe JS -->
 	<script src="~/lib/Scripts-For-Template/assets/js/swipe.js"></script>
 
+	<!-- Sweet alert -->
+	<script src="~/js/sweetalert2.js"></script>
+
+	<script src="~/js/site.js" asp-append-version="true"></script>
 
 	@*===================================================================================================================*@
 	@await RenderSectionAsync("Scripts", required: false)

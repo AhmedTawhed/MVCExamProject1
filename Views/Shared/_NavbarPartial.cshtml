@@ -7,7 +7,7 @@
 <nav id="navbar-main" aria-label="Primary navigation"
 	 class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-light navbar-theme-secondary">
 	<div class="container position-relative">
-		<a class="navbar-brand mr-lg-4" href="./index.html">
+		<a class="navbar-brand mr-lg-4" asp-area="" asp-controller="Home" asp-action="Index">
 			<img class="navbar-brand-dark"
 				 src="~/lib/Scripts-For-Template/assets/img/light.svg"
 				 alt="Logo light" />
@@ -19,7 +19,7 @@
 			<div class="navbar-collapse-header">
 				<div class="row">
 					<div class="col-6 collapse-brand">
-						<a href="./index.html">
+						<a asp-area="" asp-controller="Home" asp-action="Index">
 							<img src="~/lib/Scripts-For-Template/assets/img/dark.svg" alt="Logo dark" />
 						</a>
 					</div>
@@ -38,29 +38,31 @@
 
 			<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
 				<li class="nav-item">
-					<a href="#" class="nav-link"> Home </a>
+					<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"> Home </a>
 				</li>
 				<li class="nav-item">
-					<a href="./Exam.html" class="nav-link"> Take Exam </a>
+					<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"> Take Exam </a>
 				</li>
 				<li class="nav-item">
-					<a href="./ContactUs.html" class="nav-link"> Contact Us </a>
+					<a asp-area="" asp-controller="ContactUs" asp-action="Index" class="nav-link"> Contact Us </a>
 				</li>
 				<li class="nav-item">
-					<a href="./about.html" class="nav-link"> About Us </a>
+					<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"> About Us </a>
 				</li>
 			</ul>
 			<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
 				<li class="nav-item">
-					<a href="./sign-in.html" class="nav-link"> Login </a>
+					<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"> Login </a>
 				</li>
 				<li class="nav-item">
-					<a href="./sign-up.html" class="nav-link"> Sign Up </a>
+					<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"> Sign Up </a>
 				</li>
 			</ul>
 		</div>
 	</div>
 </nav>
+
+
 @*
 		Default NavBar
 

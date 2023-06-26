@@ -1,49 +1,238 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MVCExamProject</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MVCExamProject.styles.css" asp-append-version="true" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - MVCExamProject</title>
+
+	@*
+	Default Links
+
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/MVCExamProject.styles.css" asp-append-version="true" />
+	*@
+
+	<link type="text/css" href="~/lib/Scripts-For-Templet/css/swipe.css" rel="stylesheet" />
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVCExamProject</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+	<header class="header-global" id="home">
+		<nav id="navbar-main" aria-label="Primary navigation"
+			 class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-light navbar-theme-secondary">
+			<div class="container position-relative">
+				<a class="navbar-brand mr-lg-4" href="./index.html">
+					<img class="navbar-brand-dark"
+						 src="~/lib/Scripts-For-Templet/assets/img/light.svg"
+						 alt="Logo light" />
+					<img class="navbar-brand-light"
+						 src="~/lib/Scripts-For-Templet/assets/img/dark.svg"
+						 alt="Logo dark" />
+				</a>
+				<div class="navbar-collapse collapse mr-auto" id="navbar_global">
+					<div class="navbar-collapse-header">
+						<div class="row">
+							<div class="col-6 collapse-brand">
+								<a href="./index.html">
+									<img src="~/lib/Scripts-For-Templet/assets/img/dark.svg" alt="Logo dark" />
+								</a>
+							</div>
+							<div class="col-6 collapse-close">
+								<a href="#navbar_global"
+								   class="fas fa-times"
+								   data-toggle="collapse"
+								   data-target="#navbar_global"
+								   aria-controls="navbar_global"
+								   aria-expanded="false"
+								   title="close"
+								   aria-label="Toggle navigation"></a>
+							</div>
+						</div>
+					</div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - MVCExamProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+					<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+						<li class="nav-item">
+							<a href="#" class="nav-link"> Home </a>
+						</li>
+						<li class="nav-item">
+							<a href="./Exam.html" class="nav-link"> Take Exam </a>
+						</li>
+						<li class="nav-item">
+							<a href="./ContactUs.html" class="nav-link"> Contact Us </a>
+						</li>
+						<li class="nav-item">
+							<a href="./about.html" class="nav-link"> About Us </a>
+						</li>
+					</ul>
+					<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+						<li class="nav-item">
+							<a href="./sign-in.html" class="nav-link"> Login </a>
+						</li>
+						<li class="nav-item">
+							<a href="./sign-up.html" class="nav-link"> Sign Up </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		@*
+		Default NavBar
+
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+		<div class="container-fluid">
+		<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVCExamProject</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+		<ul class="navbar-nav flex-grow-1">
+		<li class="nav-item">
+		<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+		</li>
+		<li class="nav-item">
+		<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+		</li>
+		</ul>
+		</div>
+		</div>
+		</nav>
+		*@
+	</header>
+	<main>
+		@RenderBody()
+	</main>
+	<footer class="footer py-5 pt-lg-6">
+		<div class="sticky-left d-flex align-items-center bg-white p-3 pt-4 px-4 border border-soft shadow-sm rounded">
+			<a target="_blank" href="./ContactUs.html">Contact Us❤️</a>
+		</div>
+
+		<div class="sticky-right">
+			<a href="#home"
+			   class="icon icon-primary icon-md btn btn-icon-only btn-white border border-soft shadow-soft animate-up-3">
+				<span class="fas fa-chevron-up"></span>
+			</a>
+		</div>
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-md-4">
+					<p>
+						At our School Exam Website, we are committed to your success. We
+						strive to provide you with the tools, resources, and support you
+						need to achieve your academic goals and excel in your exams.
+					</p>
+					<ul class="social-buttons mb-5 mb-lg-0">
+						<li>
+							<a href="#"
+							   aria-label="twitter social link"
+							   class="icon icon-md icon-twitter mr-3">
+								<span class="fab fa-twitter"></span>
+							</a>
+						</li>
+						<li>
+							<a href="#"
+							   class="icon icon-md icon-facebook mr-3"
+							   aria-label="facebook social link">
+								<span class="fab fa-facebook"></span>
+							</a>
+						</li>
+						<li>
+							<a href="#"
+							   aria-label="github social link"
+							   class="icon icon-md icon-github mr-3">
+								<span class="fab fa-github"></span>
+							</a>
+						</li>
+						<li>
+							<a href="#"
+							   class="icon icon-md icon-dribbble"
+							   aria-label="dribbble social link">
+								<span class="fab fa-dribbble"></span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-6 col-md-2 mb-5 mb-lg-0">
+					<span class="h5">School Exam Website</span>
+					<ul class="footer-links mt-2">
+						<li>
+							<a target="_blank" href="./index.html">Home</a>
+						</li>
+						<li>
+							<a target="_blank" href="./Exam.html">Take Exam</a>
+						</li>
+						<li>
+							<a target="_blank" href="./about.html">About Us</a>
+						</li>
+						<li>
+							<a target="_blank" href="./ContactUs.html">Contact Us</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-12 col-md-4 mb-5 mb-lg-0">
+					<span class="h5 mb-3 d-block">Subscribe</span>
+					<form action="#">
+						<div class="form-row mb-2">
+							<div class="col-12">
+								<input type="email"
+									   class="form-control mb-2"
+									   placeholder="example@company.com"
+									   name="email"
+									   aria-label="Subscribe form"
+									   required />
+							</div>
+							<div class="col-12">
+								<button type="submit"
+										class="btn btn-dark shadow-soft btn-block"
+										data-loading-text="Sending">
+									<span>Subscribe</span>
+								</button>
+							</div>
+						</div>
+					</form>
+					<p class="text-muted font-small m-0">No spam.</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	@*
+	Default Footer
+
+	<footer class="border-top footer text-muted">
+	<div class="container">
+	&copy; 2023 - MVCExamProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+	</div>
+	</footer>
+	*@
+
+
+
+	@*Default Scripts
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+
+	*@
+
+
+	@*====================================================================================================Scripts For Templet*@
+	<!-- Core -->
+	<script src="~/lib/Scripts-For-Templet/vendor/popper.js/dist/umd/popper.min.js"></script>
+	<script src="~/lib/Scripts-For-Templet/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="~/lib/Scripts-For-Templet/vendor/headroom.js/dist/headroom.min.js"></script>
+
+	<!-- Vendor JS -->
+	<script src="~/lib/Scripts-For-Templet/vendor/onscreen/dist/on-screen.umd.min.js"></script>
+	<script src="~/lib/Scripts-For-Templet/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+	<!-- Swipe JS -->
+	<script src="~/lib/Scripts-For-Templet/assets/js/swipe.js"></script>
+
+
+	@*===================================================================================================================*@
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

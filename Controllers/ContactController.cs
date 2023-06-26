@@ -5,9 +5,14 @@ namespace MVCExamProject.Controllers
 {
     public class ContactController : Controller
     {
+        public IActionResult contactus()
+        {
+            return View();
+        }
+
 
         [HttpPost]
-        public IActionResult Index(ContactUs contact)
+        public IActionResult save(ContactUs contact)
         {
             if (ModelState.IsValid)
             {
@@ -20,10 +25,6 @@ namespace MVCExamProject.Controllers
             return View(contact);
         }
 
-        public IActionResult ThankYou()
-        {
-            return View();
-        }
     }
 
 }

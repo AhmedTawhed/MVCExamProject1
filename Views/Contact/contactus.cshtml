@@ -2,7 +2,7 @@
 
 @{
 	ViewData["Title"] = "contactus";
-	Layout = "~/Views/Admin/Shared/_GeneralLayout.cshtml";
+	//Layout = "~/Views/Admin/Shared/_GeneralLayout.cshtml";
 }
 <section class="min-vh-100 d-flex align-items-center bg-soft">
 	<div class="container">
@@ -47,7 +47,7 @@
 									<div class="form-group mb-4">
 										<label for="message">Message:</label>
 
-										<textarea asp-for="Message" rows="5" class="form-control" />
+										<textarea asp-for="Message" rows="5" class="form-control" />Enter Your Message</textarea>
 										<span asp-validation-for="Message" class="text-danger"></span>
 
 										@*<div class="input-group">
@@ -61,15 +61,10 @@
 
 
 								</div>
-								<input type="submit" value="Create" class="btn btn-primary" />
 								<button type="submit" class="btn btn-block btn-primary">
 									Send
 								</button>
 							</form>
-							<input type="submit" value="Create" class="btn btn-primary" />
-							<button type="submit" class="btn btn-block btn-primary">
-								Send
-							</button>
 						</div>
 					</div>
 				</div>

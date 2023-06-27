@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MVCExamProject.Controllers.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class ExamController : Controller
     {
 

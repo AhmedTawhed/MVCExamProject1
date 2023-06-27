@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace MVCExamProject.Controllers.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class StudentController : Controller
     {
         //[Authorize("Admin")]

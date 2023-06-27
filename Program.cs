@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using MVCExamProject.Data;
 using MVCExamProject.Repository;
@@ -15,6 +16,9 @@ namespace MVCExamProject
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<ExamContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("Exams")));
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+               .AddCookie();
 
             builder.Services.AddScoped<IAdminRepository, AdminService>();
             builder.Services.AddScoped<IUserRepository, UserService>();

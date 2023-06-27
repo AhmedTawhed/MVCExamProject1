@@ -12,6 +12,61 @@ namespace MVCExamProject.Repository
         {
             this.context = context;
         }
+
+        //sign in
+
+
+        //public void create(User user)                      //reabited
+        //{
+        //    context.Users.Add(user);
+        //    Save();
+        //}
+
+        public bool Find(string username, string password)
+
+        {
+            User user = context.Users.FirstOrDefault(u => u.Name == username && u.Password == password);
+            if (user == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public void Save()
+        {
+            context.SaveChanges();
+        }
+
+        public User GetByUserName(string name)
+        {
+            return context.Users.FirstOrDefault(u => u.Name == name);
+        }
+
+        public string GetRole(int id)
+        {
+            return "user";
+        }
+
+        public User GetUserByNameAndPassword(string Name, string Password)
+        {
+            return context.Users.FirstOrDefault(u => u.Name == Name && u.Password == Password);
+        }
+
+
+        //end sign in 
+
+
+
+
+
+
+
+
+
         public void Delete(User t)
         {
             context.Users.Remove(t);

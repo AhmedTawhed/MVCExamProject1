@@ -19,6 +19,9 @@ namespace MVCExamProject
             builder.Services.AddScoped<IAdminRepository, AdminService>();
             builder.Services.AddScoped<IUserRepository, UserService>();
             builder.Services.AddScoped<IContactUsRepository, ContactUsService>();
+            builder.Services.AddScoped<IExamRepository, ExamService>();
+            builder.Services.AddScoped<IExamQuestionRepository, ExamQuestionService>();
+            builder.Services.AddScoped<IQuestionOptionRepository, QuestionOptionService>();
 
             var app = builder.Build();
 

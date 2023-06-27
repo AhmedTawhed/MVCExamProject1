@@ -4,8 +4,7 @@ using MVCExamProject.Repository.Interfaces;
 
 namespace MVCExamProject.Controllers.Admin
 {
-    [Authorize(Roles = "Admin")]
-    public class DashboardController : Controller
+	public class DashboardController : Controller
 	{
 
 		private IContactUsRepository contactSerive;
@@ -19,6 +18,7 @@ namespace MVCExamProject.Controllers.Admin
 		}
 
 		[Route("admin/dashboard")]
+		//[Authorize("Admin")]
 		public IActionResult Index()
 		{
             return View("~/Views/Admin/Dashboard.cshtml");

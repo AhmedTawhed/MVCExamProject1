@@ -1,9 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MVCExamProject.Repository.Interfaces;
 
 namespace MVCExamProject.Controllers.Admin
 {
     public class StudentController : Controller
     {
+        private readonly IStudentRepository studentRepository;
+
+        public StudentController(IStudentRepository studentRepository)
+        {
+            this.studentRepository = studentRepository;
+        }
+
         //[Authorize("Admin")]
         [Route("admin/students")]
         public IActionResult Index()

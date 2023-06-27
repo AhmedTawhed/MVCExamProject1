@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using MVCExamProject.Data;
 using MVCExamProject.Repository;
@@ -22,6 +23,10 @@ namespace MVCExamProject
             builder.Services.AddScoped<IExamRepository, ExamService>();
             builder.Services.AddScoped<IExamQuestionRepository, ExamQuestionService>();
             builder.Services.AddScoped<IQuestionOptionRepository, QuestionOptionService>();
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+
+
 
             var app = builder.Build();
 

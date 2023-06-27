@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace MVCExamProject.Controllers.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class ExamController : Controller
     {
         private IExamRepository ExamRepo;

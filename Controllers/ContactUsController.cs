@@ -18,6 +18,7 @@ namespace MVCExamProject.Controllers
 
 
 		public IActionResult Index()
+
 		{
 			return View("~/Views/ContactUs/ContactUs.cshtml");
 		}
@@ -30,6 +31,7 @@ namespace MVCExamProject.Controllers
 			{
 				contactUsRepository.Insert(contact);
 				//save?????
+				contactUsRepository.Update(contact);
 
 				return RedirectToAction("~/Views/ContactUs/ContactUs.cshtml");
 			}

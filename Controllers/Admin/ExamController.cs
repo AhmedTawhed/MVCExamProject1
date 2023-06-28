@@ -88,13 +88,13 @@ namespace MVCExamProject.Controllers.Admin
             return View("~/Views/Admin/Exam/create.cshtml");
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id)
-        {
-            ExamRepo.Delete(id);
-            return RedirectToActionPermanent("Index");
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Delete(int id)
+        //{
+        //    ExamRepo.Delete(id);
+        //    return RedirectToActionPermanent("Index");
+        //}
 
     }
 }

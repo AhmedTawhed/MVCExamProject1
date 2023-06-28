@@ -1,4 +1,5 @@
-﻿using MVCExamProject.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MVCExamProject.Data;
 using MVCExamProject.Models;
 using MVCExamProject.Repository.Interfaces;
 
@@ -36,6 +37,13 @@ namespace MVCExamProject.Repository
         public void Update(ExamQuestion t)
         {
             context.ExamQuestions.Update(t);
+        }
+
+        public List<ExamQuestion> getByExamId(int examId)
+        {
+            return context.ExamQuestions
+                .Where(e => e.ExamId == examId)
+                .ToList();
         }
     }
 }

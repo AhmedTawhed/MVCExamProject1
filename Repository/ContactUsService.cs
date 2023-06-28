@@ -36,5 +36,10 @@ namespace MVCExamProject.Repository
         {
             context.ContactUsMSGS.Update(t);
         }
+
+        public int count()
+        {
+            return context.ContactUsMSGS.Count();
+        }
     }
 }

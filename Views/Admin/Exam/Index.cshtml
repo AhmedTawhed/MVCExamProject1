@@ -70,11 +70,14 @@
                                             <!--begin::Menu-->
                                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true" style="">
 
-                                                <div class="menu-item px-3 edit-campaign">
-                                                    <span class="menu-link px-3 create-new-project-modal">Edit</span>
+                                                <div class="menu-item px-3">
+                                                    <a href="/admin/exams/@exam.Id/edit">
+                                                        <span class="menu-link px-3 create-new-project-modal">Edit</span>
+                                                    </a>
+                                                    
                                                 </div>
-                                                <div class="delete_project_btn menu-item px-3" data-id="1685114535" data-kt-customer-table-filter="delete_row" data-bs-toggle="modal" data-bs-target="#kt_modal_new_card">
-                                                    <a href="" class="menu-link px-3" data-kt-customer-table-filter="delete_row" data-bs-toggle="modal" data-bs-target="#kt_modal_new_card">Delete</a>
+                                                <div class="delete_project_btn menu-item px-3">
+                                                    <a href="" class="menu-link px-3" data-kt-customer-table-filter="delete_row" data-bs-toggle="modal" data-id="@exam.Id" data-bs-target="#kt_modal_new_card">Delete</a>
                                                 </div>
                                                 <!--end::Menu item-->
 
@@ -118,9 +121,7 @@
 
             <form method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" method="post" asp-action="Delete" asp-controller="Exam">
                 @Html.AntiForgeryToken()
-                <input type="text" name="form_action" value="delete_project" hidden="">
-                <input type="text" name="port_slug" value="" hidden="">
-
+                <input name="id" hidden id="course-id" class="d-none" />
                 <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                     <!--begin::Form-->
                     <div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px" style="max-height: 162px;">
@@ -152,10 +153,7 @@
             $("[data-bs-target='#kt_modal_new_card']").on("click", function () {
                 let id = $(this).attr("data-id");
                 $("#course-id").prop("value", id);
-                $(".submit-form").on("click", function () {
-                    $(".submit-form .indicator-label").addClass("d-none");
-                    $(".submit-form .indicator-progress").addClass("d-block");
-                });
+                
             });
         });
     </script>

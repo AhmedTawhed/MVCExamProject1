@@ -16,7 +16,7 @@
                 <div class="row g-5 g-xl-8">
                     <div class="col-xl-4">
                         <!--begin::Statistics Widget 5-->
-                        <a href="projects.php" class="card bg-body-white hoverable card-xl-stretch mb-xl-8">
+                        <a asp-controller="Exam" asp-action="Index" class="card bg-body-white hoverable card-xl-stretch mb-xl-8">
                             <!--begin::Body-->
                             <div class="card-body">
                                 <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
@@ -28,7 +28,9 @@
                                     </svg>
                                 </span>
                                 <!--end::Svg Icon-->
-                                <div class="text-gray-900 fw-bolder fs-2 mb-2 mt-5">Exams</div>
+                                <div class="text-gray-900 fw-bolder fs-2 mb-2 mt-5">
+                                    @ViewBag.examsCount
+                                </div>
                                 <div class="fw-bold text-gray-400">Go to exams</div>
                             </div>
                             <!--end::Body-->
@@ -37,7 +39,7 @@
                     </div>
                     <div class="col-xl-4">
                         <!--begin::Statistics Widget 5-->
-                        <a href="projects.php" class="card bg-primary hoverable card-xl-stretch mb-xl-8">
+                        <a asp-controller="Student" asp-action="Index" class="card bg-primary hoverable card-xl-stretch mb-xl-8">
                             <!--begin::Body-->
                             <div class="card-body">
                                 <!--begin::Svg Icon | path: icons/duotune/general/gen008.svg-->
@@ -51,7 +53,7 @@
                                 </span>
                                 <!--end::Svg Icon-->
                                 <div class="text-white fw-bolder fs-2 mb-2 mt-5">
-                                    17
+                                    @ViewBag.studentsCount
                                 </div>
                                 <div class="fw-bold text-white">Total Students</div>
                             </div>
@@ -61,7 +63,7 @@
                     </div>
                     <div class="col-xl-4">
                         <!--begin::Statistics Widget 5-->
-                        <a href="messages.php" class="card bg-dark hoverable card-xl-stretch mb-5 mb-xl-8">
+                        <a asp-controller="Message" asp-action="Index" class="card bg-dark hoverable card-xl-stretch mb-5 mb-xl-8">
                             <!--begin::Body-->
                             <div class="card-body">
                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr070.svg-->
@@ -73,7 +75,7 @@
                                 </span>
                                 <!--end::Svg Icon-->
                                 <div class="text-gray-100 fw-bolder fs-2 mb-2 mt-5">
-                                    40
+                                    @ViewBag.messagesCount
                                 </div>
                                 <div class="fw-bold text-gray-100">Received Messages</div>
                             </div>

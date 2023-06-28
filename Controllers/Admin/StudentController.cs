@@ -1,11 +1,10 @@
-<<<<<<< HEAD
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using MVCExamProject.Models;
 using MVCExamProject.Repository.Interfaces;
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
->>>>>>> parent of 7346757 (Admin (authentication/validation/signout))
+
 
 namespace MVCExamProject.Controllers.Admin
 {

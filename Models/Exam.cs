@@ -8,6 +8,7 @@ namespace MVCExamProject.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
+        public DateTime createdAt { get; set; } = DateTime.Now;
         public int QuestionCount { get; set; }
         public List<ExamQuestion>? ExamQuestions { get; set; } = new List<ExamQuestion>();
     }

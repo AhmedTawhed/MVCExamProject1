@@ -17,6 +17,21 @@ namespace MVCExamProject.Repository
             context.Users.Remove(t);
         }
 
+        public bool Find(string email, string password)
+        {
+            var user = context.Users.FirstOrDefault(a => a.Email == email && a.Password == password);
+            if (user == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public User GetAdmin(string email, string password)
+        {
+            return context.Users.FirstOrDefault(a => a.Email == email && a.Password == password);
+        }
+
         public List<User> GetAll()
         {
             return context.Users.ToList();

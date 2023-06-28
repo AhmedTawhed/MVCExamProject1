@@ -30,6 +30,7 @@ namespace MVCExamProject.Repository
         public void Insert(Exam t)
         {
             context.Exams.Add(t);
+            context.SaveChanges();
         }
 
         public void Update(Exam t)

@@ -367,6 +367,8 @@ FodyWeavers.xsd
 */bin/*
 **/obj/
 */obj/*
+**/.vs/
+*/.vs/*
 /bin/Debug/net7.0/MVCExamProject.dll
 /bin/Debug/net7.0/MVCExamProject.pdb
 /.vs/MVCExamProject/v17/.suo

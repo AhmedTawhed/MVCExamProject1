@@ -1,29 +1,31 @@
-
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MVCExamProject.Models;
 using MVCExamProject.Repository.Interfaces;
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+
 
 namespace MVCExamProject.Controllers.Admin
 {
     [Authorize(Roles = "Admin")]
     public class StudentController : Controller
     {
-        private readonly IStudentRepository studentRepository;
+        private readonly IUserRepository _userRepository;
 
-        public StudentController(IStudentRepository studentRepository)
+        public StudentController(IUserRepository userRepository)
         {
-            this.studentRepository = studentRepository;
+            _userRepository = userRepository;
         }
 
+
+       
         //[Authorize("Admin")]
         [Route("admin/students")]
         public IActionResult Index()
         {
-
-            return View("~/Views/Admin/Student/index.cshtml");
+            List<User> students = _userRepository.GetAll();
+            return View("~/Views/Admin/Student/index.cshtml", students);
         }
 
         //[Authorize("Admin")]
@@ -33,5 +35,24 @@ namespace MVCExamProject.Controllers.Admin
 
 			return View("~/Views/Admin/Student/Show.cshtml");
 		}
-	}
+
+        //[Authorize("Admin")]
+        [Route("admin/students/delete")]
+        public IActionResult Delete(int id)
+        {
+            User student = _userRepository.GetById(id);
+
+            if (student != null)
+            {
+               
+                _userRepository.Delete(student);
+                //save????????????????
+
+                List<User> students = _userRepository.GetAll();
+                return View("~/Views/Admin/students/index.cshtml", students);
+            }
+            return View("~/Views/Admin/students/index.cshtml");
+        }
+
+    }
 }

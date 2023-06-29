@@ -142,7 +142,7 @@
 </div>
 </div>
 <div class="aside-footer flex-column-auto py-5" id="kt_aside_footer">
-<a href="signout.php" class="btn btn-danger w-100">
+ <a class="btn btn-danger w-100" asp-action="SignOut" asp-controller="Admin">
 <span class="btn-label">Logout</span>
 <!--begin::Svg Icon | path: icons/duotune/general/gen005.svg-->
 <span class="svg-icon btn-icon svg-icon-2">
@@ -164,10 +164,47 @@
         </div>
     </div>
 
+    @if (ViewBag != null && ViewBag.Response != null)
+    {
+	    if (ViewBag.Response == Responses.success.ToString())
+	    {
+		    <p id="run-success-mssg"></p>
+        }
+        else if (ViewBag.Response == Responses.fail.ToString())
+	    {
+		    <p id="run-faild-mssg"></p>  
+	    }
+
+    }
+
 		<script src="/admin/assets/plugins/global/plugins.bundle.js"></script>
 		<script src="/admin/assets/js/scripts.bundle.js"></script>
 		<script src="/admin/assets/js/dashboard-main.js"></script>
-
+        <script src="/js/sweetalert.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $(".submit-form").on("click", function () {
+                    $(".submit-form .indicator-label").addClass("d-none");
+                    $(".submit-form .indicator-progress").addClass("d-block");
+                });
+                if($("#run-success-mssg").length > 0){
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Executed Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'ok'
+                    })
+                }
+            if ($("#run-faild-mssg").length > 0) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'There was unknown error',
+                    icon: 'error',
+                    confirmButtonText: 'ok'
+                })
+            }
+            });
+        </script>
     @RenderSection("Js",false)
 	</body>
 </html>

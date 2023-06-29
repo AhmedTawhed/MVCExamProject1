@@ -1,4 +1,5 @@
-﻿using MVCExamProject.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MVCExamProject.Data;
 using MVCExamProject.Models;
 using MVCExamProject.Repository.Interfaces;
 
@@ -15,6 +16,7 @@ namespace MVCExamProject.Repository
         public void Delete(Exam t)
         {
             context.Exams.Remove(t);
+            context.SaveChanges();
         }
 
         public List<Exam> GetAll()
@@ -30,11 +32,25 @@ namespace MVCExamProject.Repository
         public void Insert(Exam t)
         {
             context.Exams.Add(t);
+            context.SaveChanges();
         }
 
         public void Update(Exam t)
         {
             context.Exams.Update(t);
+            context.SaveChanges();
+        }
+
+        public int count()
+        {
+            return context.Exams.Count();
+        }
+
+        public Exam getExam(int id)
+        {
+            return context.Exams.Include(e => e.ExamQuestions)
+                .ThenInclude(q => q.Options)
+                .FirstOrDefault(e => e.Id == id);
         }
     }
 }

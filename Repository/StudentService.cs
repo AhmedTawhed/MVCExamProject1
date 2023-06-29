@@ -1,10 +1,18 @@
-﻿using MVCExamProject.Models;
+﻿using MVCExamProject.Data;
+using MVCExamProject.Models;
 using MVCExamProject.Repository.Interfaces;
 
 namespace MVCExamProject.Repository
 {
     public class StudentService : IStudentRepository
     {
+        private readonly ExamContext context;
+
+        public StudentService(ExamContext context)
+        {
+            this.context = context;
+        }
+
         public void Delete(User t)
         {
             throw new NotImplementedException();
@@ -28,6 +36,10 @@ namespace MVCExamProject.Repository
         public void Update(User t)
         {
             throw new NotImplementedException();
+        }
+        public int count()
+        {
+            return context.Users.Where(u => u.IsAdmin == false).Count();
         }
     }
 }

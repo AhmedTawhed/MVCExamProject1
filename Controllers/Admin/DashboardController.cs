@@ -1,26 +1,35 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MVCExamProject.Repository;
 using MVCExamProject.Repository.Interfaces;
 
 namespace MVCExamProject.Controllers.Admin
 {
-	public class DashboardController : Controller
+    //[Authorize(Roles = "Admin")]
+    public class DashboardController : Controller
 	{
 
-		private IContactUsRepository contactSerive;
-		private IUserRepository userSerive;
+		private readonly IContactUsRepository contactSerive;
+		private readonly IStudentRepository studentService;
+        private readonly IExamRepository examService;
 
-
-		public DashboardController(IContactUsRepository _contactService, IUserRepository _userService)
+        public DashboardController(
+			IContactUsRepository _contactService,
+			IStudentRepository _studentService,
+			IExamRepository _examRepository
+		)
 		{
 			contactSerive = _contactService;
-			userSerive = _userService;
+            studentService = _studentService;
+            examService = _examRepository;
 		}
 
 		[Route("admin/dashboard")]
-		//[Authorize("Admin")]
 		public IActionResult Index()
 		{
+			ViewData["studentsCount"] = studentService.count();
+            ViewData["messagesCount"] = contactSerive.count();
+            ViewData["examsCount"] = examService.count();
             return View("~/Views/Admin/Dashboard.cshtml");
         }
 	}

@@ -4,38 +4,37 @@ using MVCExamProject.Repository.Interfaces;
 
 namespace MVCExamProject.Repository
 {
-	public class ContactUsService : IContactUsRepository
-	{
-		private readonly ExamContext context;
+    public class ContactUsService : IContactUsRepository
+    {
+        private readonly ExamContext context;
 
-		public ContactUsService(ExamContext context)
-		{
-			this.context = context;
-		}
-		public void Delete(ContactUs t)
-		{
-			context.Remove(t);
-		}
+        public ContactUsService(ExamContext context)
+        {
+            this.context = context;
+        }
+        public void Delete(ContactUs t)
+        {
+            context.Remove(t);
+        }
 
-		public List<ContactUs> GetAll()
-		{
-			return context.ContactUsMSGS.ToList();
-		}
+        public List<ContactUs> GetAll()
+        {
+            return context.ContactUsMSGS.ToList();
+        }
 
-		public ContactUs GetById(int id)
-		{
-			return context.ContactUsMSGS.FirstOrDefault(c => c.Id == id);
-		}
+        public ContactUs GetById(int id)
+        {
+            return context.ContactUsMSGS.FirstOrDefault(c => c.Id == id);
+        }
 
-		public void Insert(ContactUs t)
-		{
-			context.ContactUsMSGS.Add(t);
-			context.SaveChanges();
-		}
+        public void Insert(ContactUs t)
+        {
+            context.ContactUsMSGS.Add(t);
+        }
 
-		public void Update(ContactUs t)
-		{
-			context.ContactUsMSGS.Update(t);
-		}
-	}
+        public void Update(ContactUs t)
+        {
+            context.ContactUsMSGS.Update(t);
+        }
+    }
 }

@@ -40,9 +40,14 @@
 				<li class="nav-item">
 					<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"> Home </a>
 				</li>
-				<li class="nav-item">
-					<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"> Take Exam </a>
-				</li>
+				@if(User.Identity.IsAuthenticated&& User.IsInRole("user"))
+				{
+					<li class="nav-item">
+						<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"> Take Exam </a>
+					</li>
+					
+				}
+			
 				<li class="nav-item">
 					<a asp-area="" asp-controller="ContactUs" asp-action="Index" class="nav-link"> Contact Us </a>
 				</li>
@@ -51,7 +56,9 @@
 				</li>
 			</ul>
 			<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-				@if (!User.Identity.IsAuthenticated)
+
+
+				@if (!User.Identity.IsAuthenticated )
 				{
 					<li class="nav-item">
 						<a asp-area="" asp-controller="UsersSignIn" asp-action="Sign_In" class="nav-link"> Login </a>

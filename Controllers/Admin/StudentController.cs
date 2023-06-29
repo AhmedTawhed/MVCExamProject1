@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MVCExamProject.Models;
 using MVCExamProject.Repository.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
 using System.Data;
 
 
@@ -19,21 +18,22 @@ namespace MVCExamProject.Controllers.Admin
         }
 
 
-
+       
         //[Authorize("Admin")]
         [Route("admin/students")]
         public IActionResult Index()
         {
             List<User> students = _userRepository.GetAll();
-            return View("~/Views/Admin/Students/Index.cshtml", students);
+            return View("~/Views/Admin/Student/index.cshtml", students);
         }
 
-        //getbyid
-        public IActionResult viewDetails(int id)
-        {
-            User student = _userRepository.GetById(id);
-            return View(student);
-        }
+        //[Authorize("Admin")]
+        [Route("admin/students/show")]
+		public IActionResult Show(int id)
+		{
+
+			return View("~/Views/Admin/Student/Show.cshtml");
+		}
 
         //[Authorize("Admin")]
         [Route("admin/students/delete")]
@@ -43,10 +43,12 @@ namespace MVCExamProject.Controllers.Admin
 
             if (student != null)
             {
-
+               
                 _userRepository.Delete(student);
+                //save????????????????
 
-
+                List<User> students = _userRepository.GetAll();
+                return View("~/Views/Admin/students/index.cshtml", students);
             }
             return View("~/Views/Admin/students/index.cshtml");
         }

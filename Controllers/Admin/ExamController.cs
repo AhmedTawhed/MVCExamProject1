@@ -9,7 +9,7 @@ using MVCExamProject.Repository;
 
 namespace MVCExamProject.Controllers.Admin
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class ExamController : Controller
     {
         private readonly IExamRepository ExamRepo;
@@ -115,52 +115,16 @@ namespace MVCExamProject.Controllers.Admin
 
         }
 
-        /*[HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id)
+        [Route("admin/exams/{id}/edit")]
+        public IActionResult Edit(Exam exam)
         {
-            if (ModelState.IsValid)
-            {
-                // save exam
-                Exam exam = new Exam() { Name = data.Title, QuestionCount = int.Parse(data.QuetionsCount) };
-                ExamRepo.Insert(exam);
-
-                // Bind the form data to the ExamViewModel
-                int questionsCount = int.Parse(data.QuetionsCount);
-                for (int i = 1; i <= questionsCount; i++)
-                {
-                    string questionTitle = Request.Form["Titles" + i];
-                    ExamQuestion question = new ExamQuestion()
-                    {
-                        Title = questionTitle,
-                        ExamId = exam.Id
-                    };
-                    QuestionRepo.Insert(question);
-
-                    int answerNumber = int.Parse(Request.Form["Checks" + i]);
-                    var QuestionOptions = new List<string>();
-                    for (int s = 1; s <= 4; s++)
-                    {
-                        string optionTitle = Request.Form["Options" + i + s];
-                        QuestionOption option = new QuestionOption()
-                        {
-                            Title = optionTitle,
-                            IsRight = (answerNumber == s) ? true : false,
-                            ExamQuestionId = question.Id
-                        };
-                        OptionRepo.Insert(option);
-                    }
-
-                }
-                TempData["ResponseData"] = Responses.success.ToString();
-            }
-            else
-            {
-                TempData["ResponseData"] = Responses.fail.ToString();
-            }
-
+            var request = Request.Form;
+            ExamRepo.Update(exam , request);
+            TempData["ResponseData"] = Responses.success.ToString();
             return RedirectToAction("Index");
-        }*/
+        }
 
 
         [HttpGet]

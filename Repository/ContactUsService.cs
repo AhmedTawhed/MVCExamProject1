@@ -15,7 +15,6 @@ namespace MVCExamProject.Repository
 		public void Delete(ContactUs t)
 		{
 			context.Remove(t);
-			context.SaveChanges();
 		}
 
 		public List<ContactUs> GetAll()
@@ -28,16 +27,17 @@ namespace MVCExamProject.Repository
 			return context.ContactUsMSGS.FirstOrDefault(c => c.Id == id);
 		}
 
-		public void Insert(ContactUs t)
-		{
-			context.ContactUsMSGS.Add(t);
-			context.SaveChanges();
-		}
+        public void Insert(ContactUs t)
+        {
+            context.ContactUsMSGS.Add(t);
+            context.SaveChanges();
+        }
 
-		public void Update(ContactUs t)
-		{
-			context.ContactUsMSGS.Update(t);
-		}
+        public void Update(ContactUs t)
+        {
+            context.ContactUsMSGS.Update(t);
+            context.SaveChanges();
+        }
 
 		public int count()
 		{

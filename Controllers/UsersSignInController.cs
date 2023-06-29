@@ -124,7 +124,7 @@ namespace MVCExamProject.Controllers
 
 
 
-        [HttpPost]
+        
         public async Task<IActionResult> Logout()
         {
 

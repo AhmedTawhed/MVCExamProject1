@@ -51,16 +51,21 @@
 				</li>
 			</ul>
 			<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-				<li class="nav-item">
-					<a asp-area="" asp-controller="UsersSignIn" asp-action="Sign_In" class="nav-link"> Login </a>
-				</li>
-				<li class="nav-item">
-					<a asp-area="" asp-controller="UsersSignIn" asp-action="Sign_Up" class="nav-link"> Sign Up </a>
-				</li>
-
-				<li class="nav-item">
-					<a asp-area="" asp-controller="UsersSignIn" asp-action="LogOut" class="nav-link"> Log Out </a>
-				</li>
+				@if (!User.Identity.IsAuthenticated)
+				{
+					<li class="nav-item">
+						<a asp-area="" asp-controller="UsersSignIn" asp-action="Sign_In" class="nav-link"> Login </a>
+					</li>
+					<li class="nav-item">
+						<a asp-area="" asp-controller="UsersSignIn" asp-action="Sign_Up" class="nav-link"> Sign Up </a>
+					</li>
+				}
+				@if (User.Identity.IsAuthenticated)
+				{
+					<li class="nav-item">
+						<a asp-area="" asp-controller="UsersSignIn" asp-action="Logout" class="nav-link"> Log Out </a>
+					</li>
+				}
 			</ul>
 		</div>
 	</div>

@@ -16,6 +16,7 @@ namespace MVCExamProject.Repository
         public void Delete(ExamQuestion t)
         {
             context.ExamQuestions.Remove(t);
+            context.SaveChanges();
         }
 
         public List<ExamQuestion> GetAll()
@@ -37,6 +38,7 @@ namespace MVCExamProject.Repository
         public void Update(ExamQuestion t)
         {
             context.ExamQuestions.Update(t);
+            context.SaveChanges();
         }
 
         public List<ExamQuestion> getByExamId(int examId)

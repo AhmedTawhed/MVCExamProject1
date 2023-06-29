@@ -1,4 +1,8 @@
-﻿namespace MVCExamProject.Repository
+﻿using MVCExamProject.Data;
+using MVCExamProject.Models;
+using MVCExamProject.Repository.Interfaces;
+
+namespace MVCExamProject.Repository
 {
 	public class ContactUsService : IContactUsRepository
 	{

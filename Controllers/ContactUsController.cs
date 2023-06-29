@@ -31,7 +31,6 @@ namespace MVCExamProject.Controllers
 			{
 				contactUsRepository.Insert(contact);
 				//save?????
-				contactUsRepository.Update(contact);
 
 				return RedirectToAction("~/Views/ContactUs/ContactUs.cshtml");
 			}

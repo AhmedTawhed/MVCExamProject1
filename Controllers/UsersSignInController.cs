@@ -69,18 +69,12 @@ namespace MVCExamProject.Controllers
                 // create cookie
                 ClaimsIdentity claims =
                     new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-                claims.AddClaim(new Claim("Name", UserAccount.Name));
-                claims.AddClaim(new Claim("Password", UserAccount.Password));
-                claims.AddClaim(
+                claims.AddClaim(new Claim(ClaimTypes.NameIdentifier , UserAccount.Id.ToString()));
+                claims.AddClaim(new Claim(ClaimTypes.Name, UserAccount.Name));
+                claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(user.Id)));
 
-                //claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(UserAccount.Id)));
-                claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(user.Id))));
-
-
-
-                ClaimsPrincipal principle =
-                    new ClaimsPrincipal(claims);
-                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principle);
+                ClaimsPrincipal principal = new ClaimsPrincipal(claims);
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
                 return View();       //view if user is autho
             }

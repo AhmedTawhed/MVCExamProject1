@@ -1,0 +1,95 @@
+﻿@model ExamViewModel
+
+@{
+    ViewData["Title"] = "Create New Exam";
+    Layout = "~/Views/Admin/Shared/_AdminLayout.cshtml";
+    ViewData["activeLink"] = "exams";
+}
+
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content" style="background:#FFF;">
+
+<div id="kt_content_container" class="container-xxl">
+
+<form asp-action="Create" asp-controller="Exam" method="POST">
+
+    @Html.AntiForgeryToken()
+<div class="d-flex flex-column mb-7 fv-row mt-4">
+    <label class="fs-6 fw-bold mb-2">Exam Title</label>
+
+    <input type="text" class="form-control form-control-solid mt-3" required placeholder="Exam Title" asp-for="Title">
+
+</div>
+
+<div class="form-group row mt-5">
+    <div class="d-flex flex-column mb-7 fv-row mt-4">
+        <!--begin::Label-->
+        <div class="question-group">
+            
+        </div>
+      
+        <button type="button" class="btn btn-sm btn-secondary mt-3" id="add-new-question">Add New Question</button>
+    </div>
+
+
+<!--begin::Actions-->
+<div class="text-center pt-15">
+                    
+        <button type="submit" id="kt_modal_new_card_submit" class="btn btn-primary">
+            <span class="indicator-label">Save Changes</span>
+            <span class="indicator-progress">Please wait...
+            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+        </button>
+    </div>
+
+        <input type="text" id="counter" hidden asp-for="QuetionsCount" />
+</form>
+
+</div>
+</div>
+
+@section Js{
+    <script>
+        $(document).ready(function(){
+        
+            var QuestionNumber = 1;
+
+            $("#add-new-question").on("click" , function(){
+                QuestionNumber++;
+                appendNewQuestion();
+            });
+
+            function appendNewQuestion(){
+                $(".question-group").append(`
+                    <div class="question-parent mb-4 pb-5">
+                        <label class="fs-6 fw-bold mb-2">Question ${QuestionNumber}</label>
+                        <input type="text" class="form-control form-control-solid mt-3" placeholder="Enter Question ${QuestionNumber} Title" value="" required name="Titles${QuestionNumber}">
+                        <div id="question-inputs">
+                            <div class="d-flex align-items-center mb-3">
+                                <input class="form-check-input me-2" type="radio" value="1" name="Checks${QuestionNumber}" required/>
+                                <input type="text" class="form-control form-control-solid mt-3" placeholder="Option one" name="Options${QuestionNumber}1" required>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <input class="form-check-input me-2" type="radio" value="2" name="Checks${QuestionNumber}" required/>
+                                <input type="text" class="form-control form-control-solid mt-3" placeholder="Option two" name="Options${QuestionNumber}2" required>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                               <input class="form-check-input me-2" type="radio" value="3" name="Checks${QuestionNumber}" required/>
+                                <input type="text" class="form-control form-control-solid mt-3" placeholder="Option three" name="Options${QuestionNumber}3" required>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <input class="form-check-input me-2" type="radio" value="4" name="Checks${QuestionNumber}" required/>
+                                <input type="text" class="form-control form-control-solid mt-3" placeholder="Option four" name="Options${QuestionNumber}4" required>
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                $("#counter").val(QuestionNumber);
+            }
+
+            appendNewQuestion();
+        });
+    </script>
+
+}

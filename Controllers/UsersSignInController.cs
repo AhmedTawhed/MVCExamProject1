@@ -25,13 +25,13 @@ namespace MVCExamProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult Sign_Up(SignUPUserViewModel signUPUserViewModel)
+        public IActionResult Sign_Up(User user)
         {
-            User user = new User();
-            user.Name = signUPUserViewModel.Name;
-            user.Password = signUPUserViewModel.Password;
-            User user2 = userRepository.GetByUserName(user.Name);
-            if (user2 != null)
+			SignUPUserViewModel userVM = new SignUPUserViewModel();
+            userVM.Name = user.Name;
+            userVM.Password = user.Password;
+            User user3 = userRepository.GetByUserName(user.Name);
+            if (user3 != null)
             {
                 return Content("Username already taken");
             }
@@ -49,7 +49,7 @@ namespace MVCExamProject.Controllers
 
                 ClaimsPrincipal principal = new ClaimsPrincipal(claims);
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-                return RedirectToAction();        //view if user is autho
+                return View();        //view if user is autho
 
             }
             return View(user);
@@ -64,16 +64,16 @@ namespace MVCExamProject.Controllers
         {
             if (userRepository.Find(user.Name, user.Password))
             {
-              
+
                 User UserAccount = userRepository.GetUserByNameAndPassword(user.Name, user.Password);
-                //create cookie
+                // create cookie
                 ClaimsIdentity claims =
                     new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
                 claims.AddClaim(new Claim("Name", UserAccount.Name));
                 claims.AddClaim(new Claim("Password", UserAccount.Password));
                 claims.AddClaim(
 
-                //  claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(UserAccount.Id)));
+                //claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(UserAccount.Id)));
                 claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(user.Id))));
 
 
@@ -81,11 +81,11 @@ namespace MVCExamProject.Controllers
                 ClaimsPrincipal principle =
                     new ClaimsPrincipal(claims);
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principle);
-               
+
                 return View();       //view if user is autho
             }
 
-            return View();
+            return View(user);
         }
 
 

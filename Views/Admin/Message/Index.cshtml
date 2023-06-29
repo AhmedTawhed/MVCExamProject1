@@ -7,6 +7,9 @@
 
 
 
+
+
+
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
 	<div id="kt_content_container" class="container-xxl">
@@ -50,7 +53,7 @@
 									</th>
 									<th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" style="width: 165.383px;" aria-label="Email: activate to sort column ascending">Email</th>
 									<th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" style="width: 165.383px;" aria-label="Email: activate to sort column ascending">Message</th>
-									<th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" style="width: 165.383px;" aria-label="Email: activate to sort column ascending">Date</th>
+									<th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" style="width: 165.383px;" aria-label="Email: activate to sort column ascending">Date Created</th>
 									<th class="text-end min-w-70px sorting_disabled" rowspan="1" colspan="1" style="width: 79.7px;" aria-label="Actions">Actions</th>
 								</tr>
 								<!--end::Table row-->
@@ -60,7 +63,9 @@
 
 								@*=================================================================================================*@
 
-								<tr class="odd">
+								@*	sample row
+									
+									<tr class="odd">
 									<td>Amr Ahmed</td>
 									<td>mr_amr456@yahoo.com</td>
 									<td>Message goes here</td>
@@ -89,7 +94,7 @@
 										<!--end::Menu-->
 									</td>
 									<!--end::Action=-->
-								</tr>
+								</tr>*@
 								@*=================================================================================================*@
 								@foreach (var item in Model)
 								{
@@ -98,8 +103,12 @@
 										<td>@item.Email</td>
 										<td>@item.Message</td>
 										<td>@item.CreatedAt</td>
+										<td><a asp-controller="Message" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+
+
+									@*	
 										<!--begin::Action=-->
-										@*<td class="text-end">
+									<td class="text-end">
 									<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
 									Actions
 									<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
@@ -111,20 +120,25 @@
 									<!--end::Svg Icon-->
 									</a>
 									<!--begin::Menu-->
-									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" 
+									data-kt-menu="true">
 
-									<div class="delete_project_btn menu-item px-3" data-id="1685114535" data-kt-customer-table-filter="delete_row" data-bs-toggle="modal" data-bs-target="#kt_modal_new_card">
-									<a href="" class="menu-link px-3" data-kt-customer-table-filter="delete_row" data-bs-toggle="modal" data-bs-target="#kt_modal_new_card">Delete</a>
+									<div class="delete_project_btn menu-item px-3" data-id="1685114535" data-kt-customer-table-filter="delete_row" 
+									data-bs-toggle="modal" data-bs-target="#kt_modal_new_card">
+									<a href="" class="menu-link px-3" data-kt-customer-table-filter="delete_row" data-bs-toggle="modal" 
+									data-bs-target="#kt_modal_new_card">Delete</a>
 									</div>
 									<!--end::Menu item-->
 
 									</div>
 									<!--end::Menu-->
-									</td>*@
-
-										<td><a asp-controller="Message" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
-
+									</td>
 										<!--end::Action=-->
+									*@
+
+
+
+
 									</tr>
 								}
 								@*=================================================================================================*@
@@ -145,7 +159,7 @@
 </div>
 
 
-<div class="modal fade" id="kt_modal_new_card" tabindex="-1" style="display: none;" aria-hidden="true">
+@*<div class="modal fade" id="kt_modal_new_card" tabindex="-1" style="display: none;" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered mw-650px">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -161,7 +175,6 @@
 			</div>
 
 			<form method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="/admin/projects.php" id="kt_modal_new_card_form">
-
 				<input type="text" name="form_action" value="delete_project" hidden="">
 				<input type="text" name="port_slug" value="" hidden="">
 
@@ -187,7 +200,7 @@
 		</div>
 	</div>
 	<!--end::Modals-->
-</div>
+</div>*@
 
 
 
@@ -222,6 +235,3 @@
 	var searchInput = document.getElementById("searchInput");
 	searchInput.addEventListener("input", searchTable);
  </script>
-
-
-

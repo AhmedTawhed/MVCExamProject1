@@ -5,13 +5,3 @@
 
 
 
-// JavaScript (script.js)
-const button = document.getElementById("mainform");
-
-button.addEventListener("submit", function () {
-    Swal.fire(
-        'Good job!',
-        'We Will Get Your Message!',
-        'success'
-    )
-});

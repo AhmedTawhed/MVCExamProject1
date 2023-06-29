@@ -31,9 +31,8 @@ namespace MVCExamProject.Controllers
 			{
 				contactUsRepository.Insert(contact);
 
-				return RedirectToAction("~/Views/ContactUs/ContactUs.cshtml");
+				return View("~/Views/ContactUs/ContactUs.cshtml",contact);
 			}
-			// when error happen=>
 			return View("~/Views/ContactUs/ContactUs.cshtml", contact);
 		}
 

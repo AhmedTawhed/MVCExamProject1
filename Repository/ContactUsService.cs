@@ -4,9 +4,9 @@ using MVCExamProject.Repository.Interfaces;
 
 namespace MVCExamProject.Repository
 {
-    public class ContactUsService : IContactUsRepository
-    {
-        private readonly ExamContext context;
+	public class ContactUsService : IContactUsRepository
+	{
+		private readonly ExamContext context;
 
         public ContactUsService(ExamContext context)
         {
@@ -18,15 +18,15 @@ namespace MVCExamProject.Repository
             context.SaveChanges();
         }
 
-        public List<ContactUs> GetAll()
-        {
-            return context.ContactUsMSGS.ToList();
-        }
+		public List<ContactUs> GetAll()
+		{
+			return context.ContactUsMSGS.ToList();
+		}
 
-        public ContactUs GetById(int id)
-        {
-            return context.ContactUsMSGS.FirstOrDefault(c => c.Id == id);
-        }
+		public ContactUs GetById(int id)
+		{
+			return context.ContactUsMSGS.FirstOrDefault(c => c.Id == id);
+		}
 
         public void Insert(ContactUs t)
         {
@@ -40,9 +40,9 @@ namespace MVCExamProject.Repository
             context.SaveChanges();
         }
 
-        public int count()
-        {
-            return context.ContactUsMSGS.Count();
-        }
-    }
+		public int count()
+		{
+			return context.ContactUsMSGS.Count();
+		}
+	}
 }

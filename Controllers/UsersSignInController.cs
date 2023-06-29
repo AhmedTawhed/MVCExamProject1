@@ -24,39 +24,6 @@ namespace MVCExamProject.Controllers
             return View();
         }
 
-		//     [HttpPost]
-		//     public IActionResult Sign_Up(User user)
-		//     {
-		//SignUPUserViewModel userVM = new SignUPUserViewModel();
-		//         userVM.Name = user.Name;
-		//         userVM.Password = user.Password;
-		//         User user3 = userRepository.GetByUserName(user.Name);
-		//         if (user3 != null)
-		//         {
-		//             return Content("Username already taken");
-		//         }
-		//         else if (ModelState.IsValid)
-		//         {
-
-		//             userRepository.Insert(user);
-		//             userRepository.Save();
-
-		//	// create cookie
-		//	ClaimsIdentity claims =
-		//		new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-		//	claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
-		//	claims.AddClaim(new Claim(ClaimTypes.Name, user.Name));
-		//	claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(user.Id)));
-
-		//	ClaimsPrincipal principal = new ClaimsPrincipal(claims);
-		//	HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-		//             return View();        //view if user is autho
-
-
-		//         }
-		//         return View(user);
-		//     }
 		[HttpPost]
 		public IActionResult Sign_Up(SignUPUserViewModel userVM)
 		{
@@ -131,7 +98,7 @@ namespace MVCExamProject.Controllers
             // Sign out the user
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-            return RedirectToAction("index", "Home");       //view when user log out 
+			return Content("you are loged out");      //view when user log out 
         }
     }
 }

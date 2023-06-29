@@ -17,8 +17,13 @@ namespace MVCExamProject
 			builder.Services.AddDbContext<ExamContext>(options =>
 			options.UseSqlServer(builder.Configuration.GetConnectionString("Exams")));
 
+<<<<<<< HEAD
 			//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 			//   .AddCookie();
+=======
+            //builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //   .AddCookie();
+>>>>>>> started-from-usel-claims-fix
 
 			builder.Services.AddScoped<IAdminRepository, AdminService>();
 			builder.Services.AddScoped<IUserRepository, UserService>();

@@ -22,6 +22,6 @@ namespace MVCExamProject.Models
         [MaxLength(40)]
         public int? Age { get; set; }
         public bool IsAdmin { get; set; } = false;
-        public List<UserExam>? UserExams { get; set; } = new List<UserExam>();
+        public List<UserExam>? UserExams { get; set; }
     }
 }

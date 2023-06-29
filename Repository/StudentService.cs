@@ -15,30 +15,27 @@ namespace MVCExamProject.Repository
 
         public void Delete(User t)
         {
-            context.Users.Remove(t);
-            context.SaveChanges();
+            throw new NotImplementedException();
         }
 
         public List<User> GetAll()
         {
-            return context.Users.ToList();
+            throw new NotImplementedException();
         }
 
         public User GetById(int id)
         {
-            return context.Users.FirstOrDefault(u => u.Id == id);
+            throw new NotImplementedException();
         }
 
         public void Insert(User t)
         {
-            context.Users.Add(t);
-            context.SaveChanges();
+            throw new NotImplementedException();
         }
 
         public void Update(User t)
         {
-            context.Users.Update(t);
-            context.SaveChanges();
+            throw new NotImplementedException();
         }
         public int count()
         {

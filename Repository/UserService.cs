@@ -70,8 +70,6 @@ namespace MVCExamProject.Repository
         public void Delete(User t)
         {
             context.Users.Remove(t);
-            context.SaveChanges();
-
         }
 
         public List<User> GetAll()
@@ -87,15 +85,11 @@ namespace MVCExamProject.Repository
         public void Insert(User t)
         {
             context.Users.Add(t);
-            context.SaveChanges();
-
         }
 
         public void Update(User t)
         {
             context.Users.Update(t);
-            context.SaveChanges();
-
         }
     }
 }

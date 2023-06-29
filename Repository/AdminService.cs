@@ -45,13 +45,11 @@ namespace MVCExamProject.Repository
         public void Insert(User t)
         {
             context.Users.Add(t);
-            context.SaveChanges();
         }
 
         public void Update(User t)
         {
             context.Users.Update(t);
-            context.SaveChanges();
         }
     }
 }

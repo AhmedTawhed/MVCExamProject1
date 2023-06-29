@@ -15,7 +15,6 @@ namespace MVCExamProject.Repository
         public void Delete(QuestionOption t)
         {
             context.QuestionOptions.Remove(t);
-            context.SaveChanges();
         }
 
         public List<QuestionOption> GetAll()
@@ -31,13 +30,11 @@ namespace MVCExamProject.Repository
         public void Insert(QuestionOption t)
         {
             context.QuestionOptions.Add(t);
-            context.SaveChanges();
         }
 
         public void Update(QuestionOption t)
         {
             context.QuestionOptions.Update(t);
-            context.SaveChanges();
         }
 
         public List<QuestionOption> getForQuestionsList(List<ExamQuestion> questions)
@@ -50,7 +47,6 @@ namespace MVCExamProject.Repository
             }
 
             return options;
-
         }
 
         public void SaveChanges()

@@ -40,14 +40,9 @@
 				<li class="nav-item">
 					<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"> Home </a>
 				</li>
-				@if(User.Identity.IsAuthenticated&& User.IsInRole("user"))
-				{
-					<li class="nav-item">
-						<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"> Take Exam </a>
-					</li>
-					
-				}
-			
+				<li class="nav-item">
+					<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"> Take Exam </a>
+				</li>
 				<li class="nav-item">
 					<a asp-area="" asp-controller="ContactUs" asp-action="Index" class="nav-link"> Contact Us </a>
 				</li>
@@ -56,9 +51,9 @@
 				</li>
 			</ul>
 			<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+				
 
-
-				@if (!User.Identity.IsAuthenticated )
+				@if (!User.IsInRole("user"))
 				{
 					<li class="nav-item">
 						<a asp-area="" asp-controller="UsersSignIn" asp-action="Sign_In" class="nav-link"> Login </a>
@@ -67,19 +62,14 @@
 						<a asp-area="" asp-controller="UsersSignIn" asp-action="Sign_Up" class="nav-link"> Sign Up </a>
 					</li>
 				}
-				@if (User.Identity.IsAuthenticated)
-				{
-					<li class="nav-item">
-						<a asp-area="" asp-controller="UsersSignIn" asp-action="Logout" class="nav-link"> Log Out </a>
-					</li>
-				}
 
 				@if (User.IsInRole("user"))
 				{
-					<ul> <h3 class="text-danger">welcome  @User.Identity.Name</h3></ul>
-					
+
+					<li class="nav-item">
+						<a asp-area="" asp-controller="UsersSignIn" asp-action="LogOut" class="nav-link"> Log Out</a>
+					</li>
 				}
-				
 			</ul>
 		</div>
 	</div>

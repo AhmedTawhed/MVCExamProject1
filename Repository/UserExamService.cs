@@ -16,7 +16,6 @@ namespace MVCExamProject.Repository
         public void Delete(UserExam t)
         {
             context.UserExams.Remove(t);
-            context.SaveChanges();
         }
 
         public List<UserExam> GetAll()
@@ -32,15 +31,11 @@ namespace MVCExamProject.Repository
         public void Insert(UserExam t)
         {
             context.UserExams.Add(t);
-            context.SaveChanges();
-
         }
 
         public void Update(UserExam t)
         {
             context.UserExams.Update(t);
-            context.SaveChanges();
-
         }
     }
 }

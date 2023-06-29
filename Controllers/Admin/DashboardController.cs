@@ -5,7 +5,7 @@ using MVCExamProject.Repository.Interfaces;
 
 namespace MVCExamProject.Controllers.Admin
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class DashboardController : Controller
 	{
 

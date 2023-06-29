@@ -6,5 +6,6 @@ namespace MVCExamProject.Repository.Interfaces
     {
         public int count();
         public Exam getExam(int id);
+        public void Update(Exam exam, IFormCollection form);
     }
 }

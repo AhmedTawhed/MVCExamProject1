@@ -183,9 +183,9 @@
         <script src="/js/sweetalert.min.js"></script>
         <script>
             $(document).ready(function(){
-                $(".submit-form").on("click", function () {
-                    $(".submit-form .indicator-label").addClass("d-none");
-                    $(".submit-form .indicator-progress").addClass("d-block");
+                $("button[type='submit']").on("click", function () {
+                    $("button .indicator-label").addClass("d-none");
+                    $("button .indicator-progress").addClass("d-block");
                 });
                 if($("#run-success-mssg").length > 0){
                     Swal.fire({

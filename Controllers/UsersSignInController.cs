@@ -64,7 +64,7 @@ namespace MVCExamProject.Controllers
         {
             if (userRepository.Find(user.Name, user.Password))
             {
-                //get account
+              
                 User UserAccount = userRepository.GetUserByNameAndPassword(user.Name, user.Password);
                 //create cookie
                 ClaimsIdentity claims =
@@ -72,6 +72,7 @@ namespace MVCExamProject.Controllers
                 claims.AddClaim(new Claim("Name", UserAccount.Name));
                 claims.AddClaim(new Claim("Password", UserAccount.Password));
                 claims.AddClaim(
+
                 //  claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(UserAccount.Id)));
                 claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(user.Id))));
 
@@ -80,7 +81,7 @@ namespace MVCExamProject.Controllers
                 ClaimsPrincipal principle =
                     new ClaimsPrincipal(claims);
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principle);
-                //return RedirectToAction("ShowUserData");
+               
                 return View();       //view if user is autho
             }
 

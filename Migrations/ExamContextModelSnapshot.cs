@@ -65,9 +65,6 @@ namespace MVCExamProject.Migrations
                     b.Property<int>("QuestionCount")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("createdAt")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("Id");
 
                     b.ToTable("Exams");
@@ -134,7 +131,7 @@ namespace MVCExamProject.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("bit");
@@ -149,9 +146,6 @@ namespace MVCExamProject.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Email")
-                        .IsUnique();
 
                     b.ToTable("Users");
                 });

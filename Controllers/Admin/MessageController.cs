@@ -1,14 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MVCExamProject.Models;
 using MVCExamProject.Repository.Interfaces;
-using System.Data;
 
 namespace MVCExamProject.Controllers.Admin
 {
-    [Authorize(Roles = "Admin")]
-
-    public class MessageController : Controller
+	public class MessageController : Controller
 	{
 		private IContactUsRepository contactUsRepository;
 

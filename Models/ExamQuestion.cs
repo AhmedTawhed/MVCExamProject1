@@ -12,7 +12,5 @@ namespace MVCExamProject.Models
         [ForeignKey("Exam")]
         public int ExamId { get; set; }
         public Exam? Exam { get; set; }
-
-        public List<QuestionOption>? Options { get; set; }
     }
 }

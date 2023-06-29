@@ -36,22 +36,5 @@ namespace MVCExamProject.Repository
         {
             context.QuestionOptions.Update(t);
         }
-
-        public List<QuestionOption> getForQuestionsList(List<ExamQuestion> questions)
-        {
-            var options = new List<QuestionOption>();
-            foreach (ExamQuestion question in questions)
-            {
-                QuestionOption option = context.QuestionOptions.Where(o => o.ExamQuestionId == question.Id).FirstOrDefault();
-                options.Add(option);
-            }
-
-            return options;
-        }
-
-        public void SaveChanges()
-        {
-            context.SaveChanges();
-        }
     }
 }

@@ -1,10 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Policy;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MVCExamProject.Models
 {
-    [Index(nameof(Email), IsUnique = true)]
     public class User
     {
         [Key]
@@ -15,8 +12,8 @@ namespace MVCExamProject.Models
         public string Name { get; set; }
         [Required]
         [EmailAddress]
+        //[Index(IsUnique = true)]
         public string Email { get; set; }
-        [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [MaxLength(40)]

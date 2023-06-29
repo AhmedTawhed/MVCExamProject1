@@ -1,65 +1,31 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MVCExamProject.Models;
 using MVCExamProject.Repository;
 using MVCExamProject.Repository.Interfaces;
-using System.Security.Claims;
-using System.Linq;
-using Microsoft.AspNetCore.Authentication;
-using System.Configuration;
 
 namespace MVCExamProject.Controllers.Admin
 {
     public class AdminController : Controller
     {
-        private readonly IAdminRepository adminService;
+        private IAdminRepository adminService;
 
-        public AdminController(IAdminRepository adminService)
+        public AdminController
+        (
+           IAdminRepository _adminService
+        )
         {
-            this.adminService = adminService;
-        }
-        public IActionResult Login()
-        {
-            return View("~/Views/Admin/Auth/Login.cshtml");
+            adminService = _adminService;
         }
 
         [Route("admin/login")]
-        [HttpPost]
-        public IActionResult Login(User user)
-
+        public IActionResult Login()
         {
-            if (adminService.Find(user.Email, user.Password ))
+            if (User.Identity.IsAuthenticated)
             {
-                User admin = adminService.GetAdmin(user.Email, user.Password);
-                if (admin.IsAdmin == true)
-                {
-                    ClaimsIdentity claims = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-                    claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, admin.Id.ToString()));
-                    claims.AddClaim(new Claim(ClaimTypes.Name, admin.Name));
-                    claims.AddClaim(new Claim(ClaimTypes.Role, "Admin"));
-
-                    ClaimsPrincipal principal = new ClaimsPrincipal(claims);
-
-                    HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-                    return RedirectToAction("Dashboard");
-                }
-                return View("~/Views/Admin/Auth/Login.cshtml");
+                return RedirectToAction("Index");
             }
-            return View("~/Views/Admin/Auth/Login.cshtml");
-
-        }
-        public IActionResult SignOut()
-        {
-            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index","Home");
-        }
-
-
-
-
-
+			return View("~/Views/Admin/Auth/Login.cshtml");
+		}
 
     }
 }

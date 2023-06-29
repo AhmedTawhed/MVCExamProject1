@@ -1,6 +1,4 @@
-﻿@model ExamViewModel
-
-@{
+﻿@{
     ViewData["Title"] = "Create New Exam";
     Layout = "~/Views/Admin/Shared/_AdminLayout.cshtml";
     ViewData["activeLink"] = "exams";
@@ -11,13 +9,12 @@
 
 <div id="kt_content_container" class="container-xxl">
 
-<form asp-action="Create" asp-controller="Exam" method="POST">
+<form action="" method="POST">
 
-    @Html.AntiForgeryToken()
 <div class="d-flex flex-column mb-7 fv-row mt-4">
-    <label class="fs-6 fw-bold mb-2">Exam Title</label>
+        <label class="fs-6 fw-bold mb-2">Exam Title</label>
 
-    <input type="text" class="form-control form-control-solid mt-3" required placeholder="Exam Title" asp-for="Title">
+        <input type="text" class="form-control form-control-solid mt-3" required placeholder="Exam Title" value="" name="">
 
 </div>
 
@@ -42,8 +39,8 @@
         </button>
     </div>
 
-        <input type="text" id="counter" hidden asp-for="QuetionsCount" />
 </form>
+
 
 </div>
 </div>
@@ -63,29 +60,27 @@
                 $(".question-group").append(`
                     <div class="question-parent mb-4 pb-5">
                         <label class="fs-6 fw-bold mb-2">Question ${QuestionNumber}</label>
-                        <input type="text" class="form-control form-control-solid mt-3" placeholder="Enter Question ${QuestionNumber} Title" value="" required name="Titles${QuestionNumber}">
+                        <input type="text" class="form-control form-control-solid mt-3" placeholder="Enter Question ${QuestionNumber} Title" value="" required name="titles[${QuestionNumber}][]">
                         <div id="question-inputs">
                             <div class="d-flex align-items-center mb-3">
-                                <input class="form-check-input me-2" type="radio" value="1" name="Checks${QuestionNumber}" required/>
-                                <input type="text" class="form-control form-control-solid mt-3" placeholder="Option one" name="Options${QuestionNumber}1" required>
+                                <input class="form-check-input me-2" type="radio" value="1" name="checks[${QuestionNumber}][]" required/>
+                                <input type="text" class="form-control form-control-solid mt-3" placeholder="Option one" name="options[${QuestionNumber}][]" required>
                             </div>
                             <div class="d-flex align-items-center mb-3">
-                                <input class="form-check-input me-2" type="radio" value="2" name="Checks${QuestionNumber}" required/>
-                                <input type="text" class="form-control form-control-solid mt-3" placeholder="Option two" name="Options${QuestionNumber}2" required>
+                                <input class="form-check-input me-2" type="radio" value="2" name="checks[${QuestionNumber}][]" required/>
+                                <input type="text" class="form-control form-control-solid mt-3" placeholder="Option two" name="options[${QuestionNumber}][]" required>
                             </div>
                             <div class="d-flex align-items-center mb-3">
-                               <input class="form-check-input me-2" type="radio" value="3" name="Checks${QuestionNumber}" required/>
-                                <input type="text" class="form-control form-control-solid mt-3" placeholder="Option three" name="Options${QuestionNumber}3" required>
+                                <input class="form-check-input me-2" type="radio" value="3" name="checks[${QuestionNumber}][]" required/>
+                                <input type="text" class="form-control form-control-solid mt-3" placeholder="Option three" name="options[${QuestionNumber}][]" required>
                             </div>
                             <div class="d-flex align-items-center mb-3">
-                                <input class="form-check-input me-2" type="radio" value="4" name="Checks${QuestionNumber}" required/>
-                                <input type="text" class="form-control form-control-solid mt-3" placeholder="Option four" name="Options${QuestionNumber}4" required>
+                                <input class="form-check-input me-2" type="radio" value="4" name="checks[${QuestionNumber}][]" required/>
+                                <input type="text" class="form-control form-control-solid mt-3" placeholder="Option four" name="options[${QuestionNumber}][]" required>
                             </div>
                         </div>
                     </div>
                 `);
-
-                $("#counter").val(QuestionNumber);
             }
 
             appendNewQuestion();

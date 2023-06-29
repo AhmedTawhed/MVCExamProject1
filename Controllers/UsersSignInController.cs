@@ -98,7 +98,7 @@ namespace MVCExamProject.Controllers
             // Sign out the user
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-			return Content("you are loged out");      //view when user log out 
+			return RedirectToAction("index", "Home");      //view when user log out 
         }
     }
 }

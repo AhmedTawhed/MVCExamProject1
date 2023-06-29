@@ -15,6 +15,7 @@ namespace MVCExamProject.Repository
 		public void Delete(ContactUs t)
 		{
 			context.Remove(t);
+			context.SaveChanges();
 		}
 
 		public List<ContactUs> GetAll()

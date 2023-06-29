@@ -30,7 +30,6 @@ namespace MVCExamProject.Controllers
 			if (ModelState.IsValid == true)
 			{
 				contactUsRepository.Insert(contact);
-				//save?????
 
 				return RedirectToAction("~/Views/ContactUs/ContactUs.cshtml");
 			}

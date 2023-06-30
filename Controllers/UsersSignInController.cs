@@ -50,6 +50,7 @@ namespace MVCExamProject.Controllers
 				ClaimsIdentity claims =
 					new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
 				claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, userdata.Id.ToString()));
+				claims.AddClaim(new Claim(ClaimTypes.Email, userdata.Email));
 				claims.AddClaim(new Claim(ClaimTypes.Name, userdata.Name));
 				claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(userdata.Id)));
 
@@ -69,16 +70,17 @@ namespace MVCExamProject.Controllers
         [HttpPost]
         public IActionResult Sign_In(User user)
         {
-            if (userRepository.Find(user.Email, user.Password)&& user.IsAdmin == false)
-            {
+                if (userRepository.Find(user.Email, user.Password))
+                {
 
-                User UserAccount = userRepository.GetUserByEmailAndPassword(user.Email, user.Password);    
+                    User UserAccount = userRepository.GetUserByEmailAndPassword(user.Email, user.Password);
 
-        
+
                     //create cookie
                     ClaimsIdentity claims =
                         new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
                     claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, UserAccount.Id.ToString()));
+                    claims.AddClaim(new Claim(ClaimTypes.Email, UserAccount.Email));
                     claims.AddClaim(new Claim(ClaimTypes.Name, UserAccount.Name));
                     claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(user.Id)));
 
@@ -86,9 +88,8 @@ namespace MVCExamProject.Controllers
                     HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
                     return RedirectToAction("index", "Home");       //view if user is autho
-            
-            }
 
+            }
             return View(user);
         }
 

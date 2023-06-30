@@ -14,10 +14,14 @@
 
         <div class="card">
             <!--begin::Card header-->
-
-            <div class="card-header border-0 pt-6">
-
+            <form asp-action="searchName" asp-controller="Student">
+                <input type="text" name="name" placeholder="Search by name" />
+                <button type="submit">Search</button>
+            </form>
+            @*<div class="card-header border-0 pt-6">
+                <form asp-action="searchName" asp-controller="~/Controllers/Admin/Student.cs">
                 <div class="card-toolbar">
+
                     <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
 
                         <div class="card-title">
@@ -30,12 +34,13 @@
                                 </span>
                                 <input type="text" data-kt-customer-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="Search Students">
                             </div>
-                            <button type="button" class="btn btn-primary ms-2">Search</button>
+                            <button type="submit" class="btn btn-primary ms-2" >Search</button>
                         </div>
 
                     </div>
                 </div>
-            </div>
+                </form>
+            </div>*@
 
             <div class="card-body pt-0">
                 <!--begin::Table-->
@@ -62,6 +67,7 @@
                                     <tr class="odd">
                                         <td>@Html.DisplayFor(modelItem => item.Name)</td>
                                         <td> @Html.DisplayFor(modelItem => item.Email)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Age) </td>
                                         <td><a asp-controller="Student" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
 
 

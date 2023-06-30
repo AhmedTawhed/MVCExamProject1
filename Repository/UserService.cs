@@ -53,7 +53,7 @@ namespace MVCExamProject.Repository
 
         public User GetUserByNameAndPassword(string Name, string Password)
         {
-            return context.Users.FirstOrDefault(u => u.Name == Name && u.Password == Password);
+            return context.Users.FirstOrDefault(u => u.Name == Name && u.Password == Password && u.IsAdmin==false);
         }
 
         public List<User> searchByName(string name)

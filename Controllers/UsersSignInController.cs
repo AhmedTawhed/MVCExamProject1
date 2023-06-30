@@ -72,18 +72,28 @@ namespace MVCExamProject.Controllers
             if (userRepository.Find(user.Name, user.Password))
             {
 
-                User UserAccount = userRepository.GetUserByNameAndPassword(user.Name, user.Password);
-                //create cookie
-                ClaimsIdentity claims =
-                    new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-                claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, UserAccount.Id.ToString()));
-                claims.AddClaim(new Claim(ClaimTypes.Name, UserAccount.Name));
-                claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(user.Id)));
+                User UserAccount = userRepository.GetUserByNameAndPassword(user.Name, user.Password);     // &&isAdmin==false
 
-                ClaimsPrincipal principal = new ClaimsPrincipal(claims);
-                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                if (UserAccount != null)
+                {
 
-                return RedirectToAction("index" , "Home");       //view if user is autho
+
+                    //create cookie
+                    ClaimsIdentity claims =
+                        new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+                    claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, UserAccount.Id.ToString()));
+                    claims.AddClaim(new Claim(ClaimTypes.Name, UserAccount.Name));
+                    claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(user.Id)));
+
+                    ClaimsPrincipal principal = new ClaimsPrincipal(claims);
+                    HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                    return RedirectToAction("index", "Home");       //view if user is autho
+                }
+                else
+                {
+                    return RedirectToAction("~/Views/Admin/Dashboard.cshtml");   //isAdmin ==true
+                }
             }
 
             return View(user);

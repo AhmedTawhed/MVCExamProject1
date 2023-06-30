@@ -1,27 +1,14 @@
 ﻿@model IEnumerable<MVCExamProject.Models.Exam>
 
-
-<!--
-
-=========================================================
-* Swipe - Mobile App One Page Bootstrap 5 Template
-=========================================================
-
-* Product Page: https://themesberg.com/product/bootstrap/swipe-free-mobile-app-one-page-bootstrap-5-template
-* Copyright 2020 Themesberg (https://www.themesberg.com)
-
-* Coded by https://themesberg.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Contact us if you want to remove it.
-
--->
+@{
+    ViewData["Title"] = "Take Exam";
+    //Layout = "~/Views/Admin/Shared/_GeneralLayout.cshtml";
+}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    @*<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
     <title>Swipe - Mobile App One Page Bootstrap 5 Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -59,12 +46,13 @@
     <meta name="theme-color" content="#ffffff" />
 
     <!-- Fontawesome -->
-    @*<link type="text/css" href="./vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />*@
+    <link type="text/css" href="./vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
 
     <!-- Swipe CSS -->
-    @*<link type="text/css" href="./css/swipe.css" rel="stylesheet" />*@
+    <link type="text/css" href="./css/swipe.css" rel="stylesheet" />
 
     <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
+    *@
 </head>
 
 <body>
@@ -169,7 +157,7 @@
     </div>
     }
 
-    <!-- footer -->
+   @* <!-- footer -->
     <footer class="footer py-5 pt-lg-6">
         <div class="sticky-left d-flex align-items-center bg-white p-3 pt-4 px-4 border border-soft shadow-sm rounded">
             <!-- <span class="mr-3 d-block font-small mb-1">Contact Us❤️</span> -->
@@ -265,7 +253,7 @@
         </div>
     </footer>
 
-    <!-- Core -->
+  <!-- Core -->
     <script src="./vendor/popper.js/dist/umd/popper.min.js"></script>
     <script src="./vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./vendor/headroom.js/dist/headroom.min.js"></script>
@@ -277,7 +265,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     <!-- Swipe JS -->
-    <script src="./assets/js/swipe.js"></script>
+    <script src="./assets/js/swipe.js"></script>*@
 </body>
 
 </html>

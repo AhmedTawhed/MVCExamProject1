@@ -3,6 +3,7 @@ using MVCExamProject.Models;
 using MVCExamProject.Repository.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Data;
 
 
@@ -24,7 +25,7 @@ namespace MVCExamProject.Controllers.Admin
         [Route("admin/students")]
         public IActionResult Index()
         {
-            List<User> students = _userRepository.GetAll();
+            List<User> students = _userRepository.GetAll().Where( u =>u.IsAdmin==false).ToList();
             return View("~/Views/Admin/Student/index.cshtml", students);
         }
 
@@ -53,7 +54,7 @@ namespace MVCExamProject.Controllers.Admin
 
         //search
         public IActionResult searchName(string name) { 
-            var result = _userRepository.searchByName(name);
+            var result = _userRepository.searchByName(name).Where(u => u.IsAdmin == false).ToList();
             return View("~/Views/Admin/Student/index.cshtml", result);
         }
 

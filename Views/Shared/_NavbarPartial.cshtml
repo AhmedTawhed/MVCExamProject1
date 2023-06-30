@@ -7,7 +7,7 @@
 <nav id="navbar-main" aria-label="Primary navigation"
 	 class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-light navbar-theme-secondary">
 	<div class="container position-relative">
-		<a class="navbar-brand mr-lg-4" asp-area="" asp-controller="Home" asp-action="Index">
+		<a class="navbar-brand mr-lg-4" asp-controller="Home" asp-action="Index">
 			<img class="navbar-brand-dark"
 				 src="~/lib/Scripts-For-Template/assets/img/light.svg"
 				 alt="Logo light" />
@@ -19,7 +19,7 @@
 			<div class="navbar-collapse-header">
 				<div class="row">
 					<div class="col-6 collapse-brand">
-						<a asp-area="" asp-controller="Home" asp-action="Index">
+						<a asp-controller="Home" asp-action="Index">
 							<img src="~/lib/Scripts-For-Template/assets/img/dark.svg" alt="Logo dark" />
 						</a>
 					</div>
@@ -38,48 +38,49 @@
 
 			<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
 				<li class="nav-item">
-					<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"> Home </a>
+					<a asp-controller="Home" asp-action="Index" class="nav-link"> Home </a>
 				</li>
-				@if(User.Identity.IsAuthenticated&& User.IsInRole("user"))
+				@if (User.Identity.IsAuthenticated && User.IsInRole("user"))
 				{
 					<li class="nav-item">
-						<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"> Take Exam </a>
+						<a asp-controller="Home" asp-action="Index" class="nav-link"> Take Exam </a>
 					</li>
-					
+
 				}
-			
+
 				<li class="nav-item">
-					<a asp-area="" asp-controller="ContactUs" asp-action="Index" class="nav-link"> Contact Us </a>
+					<a asp-controller="ContactUs" asp-action="Index" class="nav-link"> Contact Us </a>
 				</li>
 				<li class="nav-item">
-					<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"> About Us </a>
+					<a asp-controller="Home" asp-action="About" class="nav-link"> About Us </a>
 				</li>
 			</ul>
+
 			<ul class="navbar-nav navbar-nav-hover align-items-lg-center">
 
 
-				@if (!User.Identity.IsAuthenticated )
+				@if (!User.Identity.IsAuthenticated)
 				{
 					<li class="nav-item">
-						<a asp-area="" asp-controller="UsersSignIn" asp-action="Sign_In" class="nav-link"> Login </a>
+						<a asp-controller="UsersSignIn" asp-action="Sign_In" class="nav-link"> Login </a>
 					</li>
 					<li class="nav-item">
-						<a asp-area="" asp-controller="UsersSignIn" asp-action="Sign_Up" class="nav-link"> Sign Up </a>
+						<a asp-controller="UsersSignIn" asp-action="Sign_Up" class="nav-link"> Sign Up </a>
 					</li>
 				}
 				@if (User.Identity.IsAuthenticated)
 				{
 					<li class="nav-item">
-						<a asp-area="" asp-controller="UsersSignIn" asp-action="Logout" class="nav-link"> Log Out </a>
+						<a asp-controller="UsersSignIn" asp-action="Logout" class="nav-link"> Log Out </a>
 					</li>
 				}
 
 				@if (User.IsInRole("user"))
 				{
 					<ul> <h3 class="text-danger">welcome  @User.Identity.Name</h3></ul>
-					
+
 				}
-				
+
 			</ul>
 		</div>
 	</div>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.FileProviders.Physical;
 
 namespace MVCExamProject.Attributes
@@ -7,7 +8,10 @@ namespace MVCExamProject.Attributes
 	{
 		public void OnException(ExceptionContext context)
 		{
-			
+			ViewResult viewResult = new ViewResult();
+			viewResult.ViewName = "Error";
+            //viewResult.ViewName = "SignInError";
+            context.Result = viewResult;
 		}
 	}
 }

@@ -6,6 +6,7 @@ using MVCExamProject.Models;
 using MVCExamProject.Repository.Interfaces;
 using MVCExamProject.ViewModel;
 using System.Security.Claims;
+using MVCExamProject.Attributes;
 
 namespace MVCExamProject.Controllers
 {
@@ -19,11 +20,13 @@ namespace MVCExamProject.Controllers
             userRepository = _userRepository;
 
         }
+
+        [HandelError]
         public IActionResult Sign_Up()
         {
             return View();
         }
-
+        [HandelError]
 		[HttpPost]
 		public IActionResult Sign_Up(SignUPUserViewModel userVM)
 		{

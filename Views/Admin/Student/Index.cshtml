@@ -62,10 +62,11 @@
                                     <tr class="odd">
                                         <td>@Html.DisplayFor(modelItem => item.Name)</td>
                                         <td> @Html.DisplayFor(modelItem => item.Email)</td>
+                                        <td><a asp-controller="Student" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
 
 
                                         <!--begin::Action=-->
-                                        <td class="text-end">
+                                        @*<td class="text-end">
                                             <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                                                 Actions
                                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
@@ -90,7 +91,7 @@
 
                                             </div>
                                             <!--end::Menu-->
-                                        </td>
+                                        </td>*@
                                         <!--end::Action=-->
                                     </tr>
 

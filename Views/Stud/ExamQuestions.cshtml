@@ -1,0 +1,114 @@
+﻿@model IEnumerable<MVCExamProject.Models.ExamQuestion>
+
+    @{SelectList examItems =
+        new SelectList(ViewBag.examOptions, "ExamQuestionId", "Title");
+}
+
+
+<!--
+
+=========================================================
+* Swipe - Mobile App One Page Bootstrap 5 Template
+=========================================================
+
+* Product Page: https://themesberg.com/product/bootstrap/swipe-free-mobile-app-one-page-bootstrap-5-template
+* Copyright 2020 Themesberg (https://www.themesberg.com)
+
+* Coded by https://themesberg.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Contact us if you want to remove it.
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Primary Meta Tags -->
+    <title>Swipe - Mobile App One Page Bootstrap 5 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="title" content="Swipe - Mobile App One Page Bootstrap 5 Template" />
+    <meta name="author" content="Themesberg" />
+    <meta name="description" content="Free Mobile Application One Page Bootstrap 5 Template by Themesberg" />
+    <meta name="keywords"
+          content="bootstrap, bootstrap 5, bootstrap 5 one page, bootstrap 5 mobile application, one page template, bootstrap 5 one page template, themesberg, themesberg one page, one page template bootstrap 5" />
+    <link rel="canonical"
+          href="https://themesberg.com/product/bootstrap/swipe-free-mobile-app-one-page-bootstrap-5-template" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://demo.themesberg.com/swipe/" />
+    <meta property="og:title" content="Swipe - Mobile App One Page Bootstrap 5 Template" />
+    <meta property="og:description" content="Free Mobile Application One Page Bootstrap 5 Template by Themesberg" />
+    <meta property="og:image"
+          content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/swipe/swipe-thumbnail.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://demo.themesberg.com/swipe/" />
+    <meta property="twitter:title" content="Swipe - Mobile App One Page Bootstrap 5 Template" />
+    <meta property="twitter:description" content="Free Mobile Application One Page Bootstrap 5 Template by Themesberg" />
+    <meta property="twitter:image"
+          content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/swipe/swipe-thumbnail.jpg" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/img/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon/favicon-16x16.png" />
+    <link rel="manifest" href="./assets/img/favicon/site.webmanifest" />
+    <link rel="mask-icon" href="./assets/img/favicon/safari-pinned-tab.svg" color="#ffffff" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Fontawesome -->
+    @*<link type="text/css" href="./vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />*@
+
+    <!-- Swipe CSS -->
+    <link type="text/css" href="./css/swipe.css" rel="stylesheet" />
+
+    <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
+</head>
+
+<body>  
+    
+    <div class="container mt-7">
+       @foreach (var item in Model){
+        <p>Question @(item.Id-1)</p>
+            <label asp-for="@item.Id">@item.Title</label>
+            <select asp-for="@item.Id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" asp-items="examItems.Where(o => o.Value == item.Id.ToString())">
+                <option value="" selected>--Choose The Correct Answer--</option>
+               @* @foreach (var option in examItems.Where(o => o.Value == item.Id.ToString()))
+                {
+                    <option value="@option.Value">@option.Text</option>
+                }*@
+            </select>
+       }    
+        <div class="col-3">
+            <a asp-action="Result" asp-controller="Stud"
+               class="btn btn-dark mt-3 animate-up-2">
+                Submit
+            </a>
+        </div>
+
+    </div>
+    
+
+   
+    <!-- Core -->
+    <script src="./vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="./vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./vendor/headroom.js/dist/headroom.min.js"></script>
+
+    <!-- Vendor JS -->
+    <script src="./vendor/onscreen/dist/on-screen.umd.min.js"></script>
+    <script src="./vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- Swipe JS -->
+    <script src="./assets/js/swipe.js"></script>
+</body>
+
+</html>

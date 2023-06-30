@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Sudent\**" />
+    <Content Remove="Views\Sudent\**" />
+    <EmbeddedResource Remove="Views\Sudent\**" />
+    <None Remove="Views\Sudent\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\js\quicksearch.js" />
   </ItemGroup>
 

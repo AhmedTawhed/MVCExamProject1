@@ -45,11 +45,12 @@ namespace MVCExamProject.Repository
             var options = new List<QuestionOption>();
             foreach (ExamQuestion question in questions)
             {
-                QuestionOption option = context.QuestionOptions.Where(o => o.ExamQuestionId == question.Id).FirstOrDefault();
-                options.Add(option);
+                var option = context.QuestionOptions.Where(o => o.ExamQuestionId == question.Id).ToList();
+                options.AddRange(option);
             }
 
             return options;
+           
 
         }
 

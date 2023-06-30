@@ -48,6 +48,9 @@
 							<thead>
 								<!--begin::Table row-->
 								<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+									<th class="min-w-25px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" style="width: 25px;" aria-label="Customer Name: activate to sort column ascending">
+										ID
+									</th>
 									<th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" style="width: 125px;" aria-label="Customer Name: activate to sort column ascending">
 										Name
 									</th>
@@ -99,11 +102,16 @@
 								@foreach (var item in Model)
 								{
 									<tr class="odd">
+										<td>@item.Id</td>
 										<td>@item.name</td>
 										<td>@item.Email</td>
 										<td>@item.Message</td>
 										<td>@item.CreatedAt</td>
-										<td><a asp-controller="Message" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+										<td>
+											<a onclick="confirmDelete('@item.Id')" class="btn btn-danger">Delete</a>
+										</td>
+										@*<td><a asp-controller="Message" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>*@
+
 
 
 									@*	
@@ -203,7 +211,6 @@
 </div>*@
 
 
-
  <script>
 	// Function to filter table rows based on search input
 	function searchTable() {
@@ -234,4 +241,27 @@
 	// Attach an event listener to the search input field
 	var searchInput = document.getElementById("searchInput");
 	searchInput.addEventListener("input", searchTable);
+
+
+
+
+
+
+	// Function to show SweetAlert confirmation
+	function confirmDelete(id) {
+		Swal.fire({
+			title: 'Are you sure?',
+			text: 'You are about to delete this Message. This action cannot be undone.',
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, delete it!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				// If confirmed, redirect to the delete action
+				window.location.href = '/admin/messages/delete?id='+id;
+			}
+		});
+	}
  </script>

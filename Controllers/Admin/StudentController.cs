@@ -25,7 +25,7 @@ namespace MVCExamProject.Controllers.Admin
         public IActionResult Index()
         {
             List<User> students = _userRepository.GetAll();
-            return View("~/Views/Admin/Students/Index.cshtml", students);
+            return View("~/Views/Admin/students/index.cshtml", students);
         }
 
         //getbyid

@@ -18,6 +18,35 @@
 								<h1 class="mb-0 h3">Contact US</h1>
 							</div>
 
+
+
+							@if (TempData.ContainsKey("SuccessMessage"))
+							{
+								<div class="alert alert-success">
+									@TempData["SuccessMessage"]
+								</div>
+
+								<script>
+									function () {
+										Swal.fire(
+											'Thank You!',
+											'We Will Get Your Message!',
+											'success'
+										)
+									});
+								</script>
+							}
+
+							@if (TempData.ContainsKey("ErrorMessage"))
+							{
+								<div class="alert alert-danger">
+									@TempData["ErrorMessage"]
+								</div>
+							}
+
+
+
+
 							<form method="post" id="mainform" action="\ContactUs">
 
 								<!-- Form -->
@@ -50,11 +79,15 @@
 								</div>
 								<!-- End of Form -->
 
-
-							</form>
 								<button onclick="" id="frmbtn" class="btn btn-block btn-primary">
 									Send
 								</button>
+
+							</form>
+
+
+							
+
 
 						</div>
 					</div>
@@ -66,7 +99,9 @@
 
 
 
-<script>
+
+
+@*<script>
 
 	const mainform = document.getElementById('mainform');
 
@@ -83,7 +118,7 @@
 	});
 
 
-</script>
+</script>*@
 
 
 

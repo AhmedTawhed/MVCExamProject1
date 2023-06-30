@@ -27,8 +27,9 @@ namespace MVCExamProject.Controllers
 			if (ModelState.IsValid == true)
 			{
 				contactUsRepository.Insert(contact);
-			return View("~/Views/Home/Index.cshtml");
+				TempData["SuccessMessage"] = "Message Sent successfully.";
 			}
+			TempData["ErrorMessage"] = "Failed To Send Message.";
 			return View("~/Views/ContactUs/ContactUs.cshtml", contact);
 		}
 

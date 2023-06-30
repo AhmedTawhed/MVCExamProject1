@@ -14,24 +14,20 @@ namespace MVCExamProject.Controllers
 				 = contactUsRepo;
 		}
 
-
-
-
 		public IActionResult Index()
 
 		{
 			return View("~/Views/ContactUs/ContactUs.cshtml");
 		}
 
-
+		//////////////////// Saving Submit
 		[HttpPost]
-		public IActionResult Save(ContactUs contact)
+		public IActionResult Index(ContactUs contact)
 		{
 			if (ModelState.IsValid == true)
 			{
 				contactUsRepository.Insert(contact);
-
-				return View("~/Views/ContactUs/ContactUs.cshtml",contact);
+			return View("~/Views/Home/Index.cshtml");
 			}
 			return View("~/Views/ContactUs/ContactUs.cshtml", contact);
 		}

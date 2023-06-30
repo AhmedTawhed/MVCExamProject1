@@ -18,7 +18,7 @@
 								<h1 class="mb-0 h3">Contact US</h1>
 							</div>
 
-							<form method="post" id="mainform" action="\ContactUs\Save">
+							<form method="post" id="mainform" action="\ContactUs">
 
 								<!-- Form -->
 								<div class="form-group mb-4">
@@ -50,11 +50,11 @@
 								</div>
 								<!-- End of Form -->
 
-								<button onclick="delayedFunction();" id="frmbtn" class="btn btn-block btn-primary">
-									Send
-								</button>
 
 							</form>
+								<button onclick="" id="frmbtn" class="btn btn-block btn-primary">
+									Send
+								</button>
 
 						</div>
 					</div>
@@ -68,19 +68,9 @@
 
 <script>
 
-	const form = document.getElementById('mainform');
-
-	function submitForm() {
-		form.submit();
-	}
-
-	function delayedFunction() {
-		setTimeout(submitForm, 5000);
-
-	}
+	const mainform = document.getElementById('mainform');
 
 
-	// JavaScript (script.js)
 	const button = document.getElementById("frmbtn");
 
 	button.addEventListener("click", function () {
@@ -89,8 +79,8 @@
 			'We Will Get Your Message!',
 			'success'
 		)
+		setTimeout(mainform.submit(), 5000)
 	});
-
 
 
 </script>

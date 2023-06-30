@@ -6,7 +6,7 @@ using System.Data;
 
 namespace MVCExamProject.Controllers.Admin
 {
-	//[Authorize(Roles = "Admin")]
+	[Authorize(Roles = "Admin")]
 
 	public class MessageController : Controller
 	{
@@ -19,7 +19,7 @@ namespace MVCExamProject.Controllers.Admin
 		}
 
 
-		//[Authorize("Admin")]
+		[Authorize("Admin")]
 		[Route("admin/messages")]
 		public IActionResult Index()
 		{
@@ -29,7 +29,7 @@ namespace MVCExamProject.Controllers.Admin
 
 
 
-		//[Authorize("Admin")]
+		[Authorize("Admin")]
 		[Route("admin/messages/delete")]
 		public IActionResult Delete(int id)
 		{

@@ -22,10 +22,10 @@ namespace MVCExamProject.Repository
         //    Save();
         //}
 
-        public bool Find(string username, string password)
+        public bool Find(string email, string password)
 
         {
-            User user = context.Users.FirstOrDefault(u => u.Name == username && u.Password == password);
+            User user = context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
             if (user == null)
             {
                 return false;
@@ -51,9 +51,9 @@ namespace MVCExamProject.Repository
             return "user";
         }
 
-        public User GetUserByNameAndPassword(string Name, string Password)
+        public User GetUserByEmailAndPassword(string email, string Password)
         {
-            return context.Users.FirstOrDefault(u => u.Name == Name && u.Password == Password && u.IsAdmin==false);
+            return context.Users.FirstOrDefault(u => u.Email == email && u.Password == Password); //&& u.IsAdmin==false);
         }
 
         public List<User> searchByName(string name)

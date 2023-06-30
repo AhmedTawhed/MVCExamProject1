@@ -69,15 +69,12 @@ namespace MVCExamProject.Controllers
         [HttpPost]
         public IActionResult Sign_In(User user)
         {
-            if (userRepository.Find(user.Name, user.Password))
+            if (userRepository.Find(user.Email, user.Password)&& user.IsAdmin == false)
             {
 
-                User UserAccount = userRepository.GetUserByNameAndPassword(user.Name, user.Password);     // &&isAdmin==false
+                User UserAccount = userRepository.GetUserByEmailAndPassword(user.Email, user.Password);    
 
-                if (UserAccount != null)
-                {
-
-
+        
                     //create cookie
                     ClaimsIdentity claims =
                         new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
@@ -89,11 +86,7 @@ namespace MVCExamProject.Controllers
                     HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
                     return RedirectToAction("index", "Home");       //view if user is autho
-                }
-                else
-                {
-                    return RedirectToAction("~/Views/Admin/Dashboard.cshtml");   //isAdmin ==true
-                }
+            
             }
 
             return View(user);

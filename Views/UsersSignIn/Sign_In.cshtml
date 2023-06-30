@@ -29,7 +29,7 @@
 
 								<!-- Form -->
 								<div class="form-group mb-4">
-									<label for="name">Name</label>
+									<label for="name">Name:</label>
 									<input asp-for="Name" class="form-control" placeholder="Enter Your Name" />
 									<span asp-validation-for="Name" class="text-danger"></span>
 									@*<div class="input-group">
@@ -41,13 +41,13 @@
 								<!-- Form -->
 								<div class="form-group mb-4">
 									<label for="Password">Password:</label>
-									<input asp-for="Password" rows="5" class="form-control" placeholder="" /></textarea>
+									<input asp-for="Password" rows="5" class="form-control" placeholder="Enter Your Password" /></textarea>
 									<span asp-validation-for="Password" class="text-danger"></span>
 								</div>
 								<!-- End of Form -->
 
 								<button type="submit" class="btn btn-block btn-primary">
-									Send
+									Log in
 								</button>
 
 							</form>

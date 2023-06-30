@@ -50,7 +50,7 @@
 								</div>
 								<!-- End of Form -->
 
-								<button type="submit" class="btn btn-block btn-primary">
+								<button onclick="delayedFunction();" id="frmbtn" class="btn btn-block btn-primary">
 									Send
 								</button>
 
@@ -63,6 +63,37 @@
 		</div>
 	</div>
 </section>
+
+
+
+<script>
+
+	const form = document.getElementById('mainform');
+
+	function submitForm() {
+		form.submit();
+	}
+
+	function delayedFunction() {
+		setTimeout(submitForm, 5000);
+
+	}
+
+
+	// JavaScript (script.js)
+	const button = document.getElementById("frmbtn");
+
+	button.addEventListener("click", function () {
+		Swal.fire(
+			'Thank You!',
+			'We Will Get Your Message!',
+			'success'
+		)
+	});
+
+
+
+</script>
 
 
 

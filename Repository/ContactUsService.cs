@@ -8,15 +8,15 @@ namespace MVCExamProject.Repository
 	{
 		private readonly ExamContext context;
 
-        public ContactUsService(ExamContext context)
-        {
-            this.context = context;
-        }
-        public void Delete(ContactUs t)
-        {
-            context.Remove(t);
-            context.SaveChanges();
-        }
+		public ContactUsService(ExamContext context)
+		{
+			this.context = context;
+		}
+		public void Delete(ContactUs t)
+		{
+			context.Remove(t);
+			context.SaveChanges();
+		}
 
 		public List<ContactUs> GetAll()
 		{

@@ -56,6 +56,10 @@ namespace MVCExamProject.Repository
             return context.Users.FirstOrDefault(u => u.Name == Name && u.Password == Password);
         }
 
+        public List<User> searchByName(string name)
+        {
+            return context.Users.Where(n=>n.Name.Contains(name)).ToList(); 
+        } 
 
         //end sign in 
 

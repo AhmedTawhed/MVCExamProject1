@@ -25,7 +25,7 @@ namespace MVCExamProject.Controllers.Admin
         public IActionResult Index()
         {
             List<User> students = _userRepository.GetAll();
-            return View("~/Views/Admin/Students/Index.cshtml", students);
+            return View("~/Views/Admin/Student/index.cshtml", students);
         }
 
         //getbyid
@@ -45,10 +45,16 @@ namespace MVCExamProject.Controllers.Admin
             {
 
                 _userRepository.Delete(student);
-
+                return RedirectToAction("Index");
 
             }
-            return View("~/Views/Admin/students/index.cshtml");
+            return View("~/Views/Admin/Student/index.cshtml");
+        }
+
+        //search
+        public IActionResult searchName(string name) { 
+            var result = _userRepository.searchByName(name);
+            return View("~/Views/Admin/Student/index.cshtml", result);
         }
 
     }

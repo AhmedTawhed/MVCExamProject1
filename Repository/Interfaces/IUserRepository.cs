@@ -12,5 +12,6 @@ namespace MVCExamProject.Repository.Interfaces
         public string GetRole(int id);
 
         public User GetUserByNameAndPassword(string Name, string Password);
+        public List<User> searchByName(string name);
     }
 }

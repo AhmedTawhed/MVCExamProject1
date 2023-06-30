@@ -19,7 +19,6 @@ namespace MVCExamProject.Controllers.Admin
 		}
 
 
-		[Authorize("Admin")]
 		[Route("admin/messages")]
 		public IActionResult Index()
 		{
@@ -29,7 +28,6 @@ namespace MVCExamProject.Controllers.Admin
 
 
 
-		[Authorize("Admin")]
 		[Route("admin/messages/delete")]
 		public IActionResult Delete(int id)
 		{

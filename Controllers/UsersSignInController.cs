@@ -36,16 +36,9 @@ namespace MVCExamProject.Controllers
             userdata.Email = userVM.Email;
             userdata.Password = userVM.Password;
             userdata.Age = userVM.Age;
-            //userdata.IsAdmin = userVM.IsAdmin;
-            //userdata.UserExams= userVM.UserExams;
-            User user3 = userRepository.GetByUserName(userVM.Name);
-            if (user3 != null)
+           
+            if (ModelState.IsValid)
             {
-                return Content("Username already taken");
-            }
-            else if (ModelState.IsValid)
-            {
-
                 userRepository.Insert(userdata);
                 userRepository.Save();
 

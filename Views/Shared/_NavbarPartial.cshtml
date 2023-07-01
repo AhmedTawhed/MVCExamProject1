@@ -40,7 +40,7 @@
 				<li class="nav-item">
 					<a asp-controller="Home" asp-action="Index" class="nav-link"> Home </a>
 				</li>
-				@if (User.Identity.IsAuthenticated)
+				@if (User.IsInRole("user"))
 				{
 					<li class="nav-item">
 						<a asp-area="" asp-controller="Stud" asp-action="ChooseExam" class="nav-link"> Take Exam </a>

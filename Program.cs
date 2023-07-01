@@ -27,6 +27,7 @@ namespace MVCExamProject
 			builder.Services.AddScoped<IExamQuestionRepository, ExamQuestionService>();
 			builder.Services.AddScoped<IQuestionOptionRepository, QuestionOptionService>();
 			builder.Services.AddScoped<IStudentRepository, StudentService>();
+			builder.Services.AddScoped<IUserExamRepository, UserExamService>();
 
 			builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 

@@ -29,6 +29,11 @@ namespace MVCExamProject.Repository
             return context.UserExams.FirstOrDefault(u => u.Id == id);
         }
 
+        public UserExam getExamByUserId(int userId)
+        {
+            return context.UserExams.FirstOrDefault(e => e.UserId == userId);
+        }
+
         public void Insert(UserExam t)
         {
             context.UserExams.Add(t);
@@ -41,6 +46,10 @@ namespace MVCExamProject.Repository
             context.UserExams.Update(t);
             context.SaveChanges();
 
+        }
+        public void Save()
+        {
+            context.SaveChanges();
         }
     }
 }

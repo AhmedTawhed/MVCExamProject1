@@ -25,7 +25,7 @@ namespace MVCExamProject.Repository
         public bool Find(string email, string password)
 
         {
-            User user = context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+            User user = context.Users.FirstOrDefault(u => u.Email == email && u.Password == password );     //&& u.IsAdmin==false
             if (user == null)
             {
                 return false;

@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using MVCExamProject.Attributes;
 using MVCExamProject.Data;
 using MVCExamProject.Models;
 using MVCExamProject.Repository.Interfaces;
 using MVCExamProject.ViewModel;
 using System.Security.Claims;
-using MVCExamProject.Attributes;
 
 namespace MVCExamProject.Controllers
 {
@@ -27,70 +27,74 @@ namespace MVCExamProject.Controllers
             return View();
         }
         [HandelError]
-		[HttpPost]
-		public IActionResult Sign_Up(SignUPUserViewModel userVM)
-		{
-			User userdata=new User();
+        [HttpPost]
+        public IActionResult Sign_Up(SignUPUserViewModel userVM)
+        {
+            User userdata = new User();
 
-			userdata.Name = userVM.Name;
-			userdata.Email = userVM.Email;
-			userdata.Password = userVM.Password;
-			userdata.Age = userVM.Age;
-			//userdata.IsAdmin = userVM.IsAdmin;
-			//userdata.UserExams= userVM.UserExams;
-			User user3 = userRepository.GetByUserName(userVM.Name);
-			if (user3 != null)
-			{
-				return Content("Username already taken");
-			}
-			else if (ModelState.IsValid)
-			{
+            userdata.Name = userVM.Name;
+            userdata.Email = userVM.Email;
+            userdata.Password = userVM.Password;
+            userdata.Age = userVM.Age;
+            //userdata.IsAdmin = userVM.IsAdmin;
+            //userdata.UserExams= userVM.UserExams;
+            User user3 = userRepository.GetByUserName(userVM.Name);
+            if (user3 != null)
+            {
+                return Content("Username already taken");
+            }
+            else if (ModelState.IsValid)
+            {
 
-				userRepository.Insert(userdata);
-				userRepository.Save();
+                userRepository.Insert(userdata);
+                userRepository.Save();
 
-				// create cookie
-				ClaimsIdentity claims =
-					new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-				claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, userdata.Id.ToString()));
-				claims.AddClaim(new Claim(ClaimTypes.Email, userdata.Email));
-				claims.AddClaim(new Claim(ClaimTypes.Name, userdata.Name));
-				claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(userdata.Id)));
+                // create cookie
+                ClaimsIdentity claims =
+                    new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+                claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, userdata.Id.ToString()));
+                claims.AddClaim(new Claim(ClaimTypes.Email, userdata.Email));
+                claims.AddClaim(new Claim(ClaimTypes.Name, userdata.Name));
+                claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(userdata.Id)));
 
-				ClaimsPrincipal principal = new ClaimsPrincipal(claims);
-				HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                ClaimsPrincipal principal = new ClaimsPrincipal(claims);
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-				return RedirectToAction("index" ,"Home");        //view if user is autho
+                return RedirectToAction("index", "Home");        //view if user is autho
 
 
-			}
-			return View(userdata);
-		}
-		public IActionResult Sign_In()
+            }
+            return View(userdata);
+        }
+        public IActionResult Sign_In()
         {
             return View();
         }
         [HttpPost]
         public IActionResult Sign_In(User user)
         {
-                if (userRepository.Find(user.Email, user.Password))
+            if (userRepository.Find(user.Email, user.Password))
+            {
+               
+
+                User UserAccount = userRepository.GetUserByEmailAndPassword(user.Email, user.Password);
+
+                if (UserAccount.IsAdmin == true)
                 {
+                    return RedirectToAction("login", "Admin");
+                }
+                //create cookie
+                ClaimsIdentity claims =
+                    new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+                claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, UserAccount.Id.ToString()));
+                claims.AddClaim(new Claim(ClaimTypes.Email, UserAccount.Email));
+                claims.AddClaim(new Claim(ClaimTypes.Name, UserAccount.Name));
+                claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(user.Id)));
 
-                    User UserAccount = userRepository.GetUserByEmailAndPassword(user.Email, user.Password);
+                ClaimsPrincipal principal = new ClaimsPrincipal(claims);
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-
-                    //create cookie
-                    ClaimsIdentity claims =
-                        new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-                    claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, UserAccount.Id.ToString()));
-                    claims.AddClaim(new Claim(ClaimTypes.Email, UserAccount.Email));
-                    claims.AddClaim(new Claim(ClaimTypes.Name, UserAccount.Name));
-                    claims.AddClaim(new Claim(ClaimTypes.Role, userRepository.GetRole(user.Id)));
-
-                    ClaimsPrincipal principal = new ClaimsPrincipal(claims);
-                    HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-                    return RedirectToAction("index", "Home");       //view if user is autho
+                return RedirectToAction("index", "Home");       //view if user is autho
 
             }
             return View(user);
@@ -98,14 +102,14 @@ namespace MVCExamProject.Controllers
 
 
 
-        
+
         public async Task<IActionResult> Logout()
         {
 
             // Sign out the user
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-			return RedirectToAction("index", "Home");      //view when user log out 
+            return RedirectToAction("index", "Home");      //view when user log out 
         }
     }
 }

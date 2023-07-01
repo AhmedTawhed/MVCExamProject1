@@ -4,6 +4,7 @@ using MVCExamProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCExamProject.Migrations
 {
     [DbContext(typeof(ExamContext))]
-    partial class ExamContextModelSnapshot : ModelSnapshot
+    [Migration("20230701002910_asd")]
+    partial class asd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,6 +85,9 @@ namespace MVCExamProject.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ExamId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SelectedOptionId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")

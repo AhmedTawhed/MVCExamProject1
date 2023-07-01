@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using MVCExamProject.Models;
 using MVCExamProject.Repository;
 using MVCExamProject.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace MVCExamProject.Controllers
 {
@@ -28,15 +30,24 @@ namespace MVCExamProject.Controllers
 		}
 		public IActionResult ExamQuestions(int Id)
 		{
-            var examQuestions = examQuestionService.getByExamId(Id);
-            var questionOptions = questionOptionService.getForQuestionsList(examQuestions as List<ExamQuestion>);
-
-            ViewBag.examOptions = questionOptions;
-
-            return View(examQuestions);
+            var questionsAndOptions = examService.getExam(Id).ExamQuestions.ToList();
+            return View(questionsAndOptions);
         }
-        public IActionResult Result()
-        {
+        [HttpPost]
+        public IActionResult Result(List<int> optionsId)
+        { 
+            int count = 0;
+            foreach (int id in optionsId)
+            {
+                var option = questionOptionService.GetById(id);
+                if (option != null && option.IsRight == true)
+                {
+                    count++;
+                }      
+            }
+
+            ViewBag.ResultCount = count;
+
             return View();
         }
 

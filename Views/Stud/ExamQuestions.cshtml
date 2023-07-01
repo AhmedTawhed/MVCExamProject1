@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<MVCExamProject.Models.ExamQuestion>
 
-    @{SelectList examItems =
+  @*  @{SelectList examItems =
         new SelectList(ViewBag.examOptions, "ExamQuestionId", "Title");
-}
+}*@
 
 
 <!--
@@ -70,30 +70,31 @@
 
     <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
 </head>
+      @*<select asp-for="@item.Id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" asp-items="examItems.Where(o => o.Value == item.Id.ToString())">*@
 
 <body>  
-    
+    <form asp-controller="Stud" asp-action="Result" method="post">
     <div class="container mt-7">
-       @foreach (var item in Model){
-        <p>Question @(item.Id-1)</p>
-            <label asp-for="@item.Id">@item.Title</label>
-            <select asp-for="@item.Id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" asp-items="examItems.Where(o => o.Value == item.Id.ToString())">
-                <option value="" selected>--Choose The Correct Answer--</option>
-               @* @foreach (var option in examItems.Where(o => o.Value == item.Id.ToString()))
+       <p><b>Choose The Right Answer :</b></p>
+       @foreach (var item in Model)
+       {
+        <p>Question @(item.Id-1) :</p>
+            <label asp-for="@item.Title">@item.Title</label>
+            <select name="optionsId" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
+                @foreach (var option in item.Options)
                 {
-                    <option value="@option.Value">@option.Text</option>
-                }*@
+                    <option value="@option.Id">@option.Title</option>
+                }
             </select>
-       }    
+       }
         <div class="col-3">
-            <a asp-action="Result" asp-controller="Stud"
-               class="btn btn-dark mt-3 animate-up-2">
+            <button type="submit" class="btn btn-dark mt-3 animate-up-2">
                 Submit
-            </a>
+            </button>
         </div>
+        </div>
+    </form>
 
-    </div>
-    
 
    
     <!-- Core -->

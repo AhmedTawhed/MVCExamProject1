@@ -13,6 +13,6 @@ namespace MVCExamProject.Models
         public int ExamId { get; set; }
         public Exam? Exam { get; set; }
 
-        public List<QuestionOption>? Options { get; set; }
+        public List<QuestionOption>? Options { get; set; } = new List<QuestionOption>();
     }
 }

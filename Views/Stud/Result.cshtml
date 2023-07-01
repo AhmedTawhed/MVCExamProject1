@@ -1,4 +1,7 @@
-﻿<!--
+﻿
+
+
+<!--
 
 =========================================================
 * Swipe - Mobile App One Page Bootstrap 5 Template
@@ -81,11 +84,18 @@
                 <div class="card">
                     <div class="text-right cross"> <i class="fa fa-times"></i> </div>
                     <div class="card-body text-center">
-                        <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
-                        <h4>CONGRATULATIONS!</h4>
-                        <p>You have been Passed your Exam With Degree 10/10 </p> <button class="btn btn-out btn-square continue">
-                            CONTINUE
-                        </button>
+                        @if (ViewBag.ResultCount >= 5)
+                        {
+                           <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
+                           <h4>CONGRATULATIONS!</h4>
+                           <p>You have Passed The Exam With Degree @ViewBag.ResultCount/10 </p> 
+                           <button class="btn btn-out btn-square continue">CONTINUE</button>
+                        }else{
+                        <img src="https://st2.depositphotos.com/1022214/7172/i/450/depositphotos_71726165-stock-photo-man-with-a-rubber-stamp.jpg">
+                        <h4>FAILED!!!!</h4>
+                        <p>You have Failed The Exam With Degree @ViewBag.ResultCount/10 </p>
+                        <button class="btn btn-out btn-square continue">CONTINUE</button>
+                        }
                     </div>
                 </div>
             </div>

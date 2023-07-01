@@ -33,14 +33,20 @@ namespace MVCExamProject.Controllers
 		public IActionResult ExamQuestions(int Id)
 		{
             var questionsAndOptions = examService.getExam(Id).ExamQuestions.ToList();
+            ViewBag.examId = Id;
             return View(questionsAndOptions);
         }
         [HttpPost]
-        public IActionResult Result(List<int> optionsId)
-        { 
+        public IActionResult Result(List<int> optionsId,int examId)
+        {
+            
+           
             int count = 0;
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
+            UserExam userExam = new UserExam();
+            userExam.ExamId = examId;
+            userExam.UserId = int.Parse(userId);
             foreach (int id in optionsId)
             {
                 var option = questionOptionService.GetById(id);
@@ -49,21 +55,18 @@ namespace MVCExamProject.Controllers
                     count++;
                 }      
             }
-            var exam = userExamService.getExamByUserId(int.Parse(userId));
 
             if (count >= 5)
             {
-                exam.IsPassed = true;
+                userExam.IsPassed = true;
 
-            } else { exam.IsPassed = false; }
+            } else { userExam.IsPassed = false; }
 
-            exam.Degree = count;
-            exam.CreatedAt = DateTime.Now;
-            userExamService.Save();
+            userExam.Degree = count;
+            userExam.CreatedAt = DateTime.Now;
+            userExamService.Insert(userExam);
 
-            ViewBag.ResultCount = count;
-
-            return View(exam);
+            return View(userExam);
         }
 
     }

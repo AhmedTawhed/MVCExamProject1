@@ -4,7 +4,6 @@
         new SelectList(ViewBag.examOptions, "ExamQuestionId", "Title");
 }*@
 
-
 <!--
 
 =========================================================
@@ -87,6 +86,8 @@
                 }
             </select>
        }
+            <input type="hidden" name="examId" value="@ViewBag.examId" />
+
         <div class="col-3">
             <button type="submit" class="btn btn-dark mt-3 animate-up-2">
                 Submit

@@ -65,40 +65,6 @@
 							<tbody id="tableBody" class="fw-bold text-gray-600">
 
 								@*=================================================================================================*@
-
-								@*	sample row
-									
-									<tr class="odd">
-									<td>Amr Ahmed</td>
-									<td>mr_amr456@yahoo.com</td>
-									<td>Message goes here</td>
-									<td>21/03/2023</td>
-									<!--begin::Action=-->
-									<td class="text-end">
-										<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-											Actions
-											<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-											<span class="svg-icon svg-icon-5 m-0">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-													<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black"></path>
-												</svg>
-											</span>
-											<!--end::Svg Icon-->
-										</a>
-										<!--begin::Menu-->
-										<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-
-											<div class="delete_project_btn menu-item px-3" data-id="1685114535" data-kt-customer-table-filter="delete_row" data-bs-toggle="modal" data-bs-target="#kt_modal_new_card">
-												<a href="" class="menu-link px-3" data-kt-customer-table-filter="delete_row" data-bs-toggle="modal" data-bs-target="#kt_modal_new_card">Delete</a>
-											</div>
-											<!--end::Menu item-->
-
-										</div>
-										<!--end::Menu-->
-									</td>
-									<!--end::Action=-->
-								</tr>*@
-								@*=================================================================================================*@
 								@foreach (var item in Model)
 								{
 									<tr class="odd">
@@ -111,41 +77,6 @@
 											<a onclick="confirmDelete('@item.Id')" class="btn btn-danger">Delete</a>
 										</td>
 										@*<td><a asp-controller="Message" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>*@
-
-
-
-									@*	
-										<!--begin::Action=-->
-									<td class="text-end">
-									<a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-									Actions
-									<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-									<span class="svg-icon svg-icon-5 m-0">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-									<path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black"></path>
-									</svg>
-									</span>
-									<!--end::Svg Icon-->
-									</a>
-									<!--begin::Menu-->
-									<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" 
-									data-kt-menu="true">
-
-									<div class="delete_project_btn menu-item px-3" data-id="1685114535" data-kt-customer-table-filter="delete_row" 
-									data-bs-toggle="modal" data-bs-target="#kt_modal_new_card">
-									<a href="" class="menu-link px-3" data-kt-customer-table-filter="delete_row" data-bs-toggle="modal" 
-									data-bs-target="#kt_modal_new_card">Delete</a>
-									</div>
-									<!--end::Menu item-->
-
-									</div>
-									<!--end::Menu-->
-									</td>
-										<!--end::Action=-->
-									*@
-
-
-
 
 									</tr>
 								}
@@ -165,51 +96,6 @@
 
 	</div>
 </div>
-
-
-@*<div class="modal fade" id="kt_modal_new_card" tabindex="-1" style="display: none;" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered mw-650px">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h2>Delete Exam</h2>
-				<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-					<span class="svg-icon svg-icon-1">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-							<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black"></rect>
-							<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"></rect>
-						</svg>
-					</span>
-				</div>
-			</div>
-
-			<form method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" action="/admin/projects.php" id="kt_modal_new_card_form">
-				<input type="text" name="form_action" value="delete_project" hidden="">
-				<input type="text" name="port_slug" value="" hidden="">
-
-				<div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-					<!--begin::Form-->
-					<div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_customer_header" data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px" style="max-height: 162px;">
-						<h2 class="text-center text-danger">Are you sure you want to delete this Student ?</h2>
-						<div class="form-group row">
-
-
-							<!--begin::Actions-->
-							<div class="text-center pt-15">
-								<button type="reset" id="kt_modal_new_card_cancel" class="btn btn-light me-3">Discard</button>
-								<button type="submit" class="btn btn-danger">
-									<span class="indicator-label">Delete Student</span>
-
-								</button>
-							</div>
-						</div>
-					</div>
-				</div><div></div>
-			</form>
-		</div>
-	</div>
-	<!--end::Modals-->
-</div>*@
-
 
  <script>
 	// Function to filter table rows based on search input
